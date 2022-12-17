@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hellojob/screen/BottomBar.dart';
 
 import '../constants.dart';
 
@@ -207,7 +208,7 @@ class SignUp extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SignUp()),
+                        MaterialPageRoute(builder: (context) => BottomBar()),
                       );
                     },
                     child: const Text(

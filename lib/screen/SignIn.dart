@@ -88,7 +88,7 @@ class SignIn extends StatelessWidget {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colorBGDangNhap,
-                      minimumSize: const Size.fromHeight(55), // NEW
+                      minimumSize: const Size.fromHeight(50), // NEW
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -107,7 +107,7 @@ class SignIn extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
+            Container(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 50),
               child: Row(children: <Widget>[
                 Expanded(child: Divider()),
@@ -120,13 +120,13 @@ class SignIn extends StatelessWidget {
               children: [
                 Container(
                   margin: const EdgeInsets.only(top: 10),
-                  child: Image.asset('/images/fb_login.png'),
+                  child: Image.asset('assets/images/fb_login.png'),
                   height: 42,
                   width: 42,
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 16.0, top: 10),
-                  child: Image.asset('/images/gg_login.png'),
+                  child: Image.asset('assets/images/gg_login.png'),
                   height: 42,
                   width: 42,
                 ),
