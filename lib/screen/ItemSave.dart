@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:hellojob/AppLayout.dart';
 import 'package:hellojob/constants.dart';
 
-class ItemDetail extends StatelessWidget {
-  const ItemDetail({Key? key}) : super(key: key);
+class ItemSave extends StatelessWidget {
+  const ItemSave({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
-    return Scaffold(
-      body: Container(
+    return SizedBox(
+      child: Container(
+        height: 138,
+        width: size.width - 32,
         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -19,52 +21,57 @@ class ItemDetail extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  margin: const EdgeInsets.only(),
-                  height: 60,
-                  width: 60,
-                  decoration: BoxDecoration(
-                      image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage("assets/images/yua.png"))),
+                Row(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(),
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                          image: const DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/images/yua.png"))),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 12),
+                      child: Row(
+                        children: [
+                          Text("Diễn viên điện ảnh",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                                color: CupertinoColors.black,
+                              )),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 12.0, left: 12),
-                  child: Row(
-                    children: [
-                      Text("Diễn viên điện ảnh",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 12,
-                            color: CupertinoColors.black,
-                          )),
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 23,
-                  width: 15,
-                  margin: const EdgeInsets.only(left: 123),
-                  decoration: BoxDecoration(
-                      image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage("assets/images/book.png"))),
+                Row(
+                  children: [
+                    Container(
+                      height: 23,
+                      width: 15,
+                      decoration: BoxDecoration(
+                          image: const DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage("assets/images/book.png"))),
+                    ),
+                  ],
                 ),
               ],
             ),
-            Container(
-              margin: const EdgeInsets.only(top: 8),
-              child: Row(
-                children: [
-                  Text(
-                      "Đóng các bộ phim tâm lý, tình cảm gia đình, công sở bệnh viện",
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: CupertinoColors.black,
-                      )),
-                ],
+            SizedBox(
+              child: Container(
+                margin: const EdgeInsets.only(top: 8),
+                child: Text(
+                    "Đóng các bộ phim tâm lý, tình cảm gia đình, công sở bệnh viện",
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: CupertinoColors.black,
+                    )),
               ),
             ),
             Row(

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hellojob/screen/DetailJob.dart';
 import 'package:hellojob/screen/Home.dart';
+import 'package:hellojob/screen/ItemViewSave.dart';
 
 import '../constants.dart';
 import 'Profile.dart';
@@ -16,8 +18,8 @@ class _BottomBarSate extends State<BottomBar> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     Home(),
-    Text("3"),
-    Text("3"),
+    ItemViewSave(),
+    DetailJob(),
     Profile(),
   ];
 
