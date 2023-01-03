@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hellojob/UserViewModel.dart';
 import 'package:hellojob/screen/SignIn.dart';
 
 void main() {
@@ -53,6 +54,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  final UserViewModel _userViewModel = UserViewModel.getInstance();
 
   @override
   void initState() {

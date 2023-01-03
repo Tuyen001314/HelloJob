@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hellojob/api/ApiHelper.dart';
 import 'package:hellojob/constants.dart';
 import 'package:hellojob/screen/SignUp.dart';
 
 class SignIn extends StatelessWidget {
+  String email = "";
+  var password = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,10 +47,14 @@ class SignIn extends StatelessWidget {
                   height: 45,
                   margin: const EdgeInsets.only(left: 16.0, top: 24, right: 16),
                   child: TextField(
-                    style: TextStyle(
+                    onChanged: (value) {
+                      email = value;
+                    },
+                    style: const TextStyle(
                       fontSize: 15,
                       color: colorTenDangNhap,
                     ),
+
                     decoration: const InputDecoration(
                         labelText: 'Tên đăng nhập *',
                         border: OutlineInputBorder(),
@@ -65,6 +72,9 @@ class SignIn extends StatelessWidget {
                   height: 45,
                   margin: const EdgeInsets.only(left: 16.0, top: 24, right: 16),
                   child: TextField(
+                    onChanged: (value) {
+                      password = value;
+                    },
                     style: TextStyle(
                       fontSize: 15,
                       color: colorTenDangNhap,
@@ -90,12 +100,7 @@ class SignIn extends StatelessWidget {
                       backgroundColor: colorBGDangNhap,
                       minimumSize: const Size.fromHeight(50), // NEW
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignUp()),
-                      );
-                    },
+                    onPressed:() {click(email, password);},
                     child: const Text(
                       'Đăng nhập',
                       style: TextStyle(
@@ -181,4 +186,11 @@ class SignIn extends StatelessWidget {
   }
 }
 
-void click() {}
+void click(email, password) {
+  var response = getAllJobs();
+  print(email + password);
+  response.whenComplete(() => print("login complete"))
+  .then((value) => value.jobs?.forEach((job) {
+    print(job.code);
+  }));
+}
