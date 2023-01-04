@@ -7,14 +7,14 @@ import 'package:hellojob/screen/ItemViewSave.dart';
 import '../constants.dart';
 import 'Profile.dart';
 
-class BottomBar extends StatefulWidget {
-  const BottomBar({Key? key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
-  State<BottomBar> createState() => _BottomBarSate();
+  State<MainScreen> createState() => _MainScreenSate();
 }
 
-class _BottomBarSate extends State<BottomBar> {
+class _MainScreenSate extends State<MainScreen> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     Home(),

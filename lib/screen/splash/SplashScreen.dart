@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       userState.getUserFromLocal().then((value) {
         print("when login from local ${userState.currentUser}");
         if(userState.currentUser is Success || userState.currentUser is Failure) {
-          Navigator.of(context).pushNamed("/Home");
+          Navigator.of(context).pushNamed("/Main");
         }
       });
     });

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
-import 'BottomBar.dart';
+import 'MainScreen.dart';
 import 'ItemView.dart';
 
 class Profile extends StatelessWidget {
@@ -489,7 +489,7 @@ class Profile extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => BottomBar()),
+                                builder: (context) => MainScreen()),
                           );
                         },
                         child: const Text(
