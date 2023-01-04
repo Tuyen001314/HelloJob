@@ -2,20 +2,28 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharePrefUtil {
   static SharePrefUtil? _instance;
-
-  static SharePrefUtil getInstance() {
-    _instance ??= SharePrefUtil();
+  static SharePrefUtil getInstance()  {
+     if(_instance == null) {
+      _instance = SharePrefUtil();
+      _instance!._initPref();
+    }
     return _instance!;
   }
 
-  SharePrefUtil() {
-    initPref();
+  static Future<void> init() async {
+    if(_instance == null) {
+      _instance = SharePrefUtil();
+      _instance!._initPref();
+    }
   }
 
   late SharedPreferences pref;
 
-  Future<void> initPref() async {
-    await SharedPreferences.getInstance().then((value) => pref = value);
+  Future<void> _initPref() async {
+    SharedPreferences.getInstance().then((value) {
+      pref = value;
+      print("init pref ok");
+    });
   }
 
   String? _saveUserName;

@@ -3,6 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hellojob/UserViewModel.dart';
 import 'package:hellojob/screen/SignIn.dart';
+import 'package:hellojob/screen/splash/SplashScreen.dart';
+import 'package:hellojob/util/Routes.dart';
+import 'package:hellojob/util/SharePrefUtil.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,15 +58,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  final UserViewModel _userViewModel = UserViewModel.getInstance();
-
+  final UserState _userViewModel = UserState.getInstance();
   @override
   void initState() {
     super.initState();
-    Timer(
-        Duration(seconds: 4),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => SignIn())));
+
   }
 
   void _incrementCounter() {
@@ -84,23 +84,17 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      body: Container(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              child: Container(
-                child: Image.asset('assets/images/logo1.png'),
-                height: 75.0,
-              ),
-            ),
-          ],
-        ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    SharePrefUtil.init().whenComplete(() => setState(() {}));
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<UserState>(
+            create: (_) => UserState.getInstance())
+      ],
+      child: MaterialApp(
+        title: "HelloJob",
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: (settings) => Routes.getRoute(settings),
+      ),
     );
   }
 }

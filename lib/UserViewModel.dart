@@ -1,51 +1,49 @@
-import 'package:hellojob/api/ApiHelper.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:hellojob/util/SharePrefUtil.dart';
+
 import 'api/ApiHelper.dart' as apiHelper;
-
-
 import 'model/User.dart';
 
-class UserViewModel {
-  static UserViewModel? _instance;
+class UserState extends ChangeNotifier {
+  static UserState? _instance;
 
-  static UserViewModel getInstance() {
-    _instance ??= UserViewModel();
+  static UserState getInstance() {
+    _instance ??= UserState();
     return _instance!;
   }
 
-  UserViewModel() {
-    getUserFromLocal();
-  }
+  Resource<User> currentUser = Resource.loading();
 
-  Resource<User> currentUser = Resource.loading() as Resource<User>;
-
-  void getUserFromLocal() async {
-    var saveUserName = SharePrefUtil().saveUserName;
-    var savePassword = SharePrefUtil().savePassword;
+  Future<void> getUserFromLocal() async {
+    var saveUserName = SharePrefUtil.getInstance().saveUserName;
+    var savePassword = SharePrefUtil.getInstance().savePassword;
     if (saveUserName?.isNotEmpty == true && savePassword?.isNotEmpty == true) {
-      await apiHelper.login(saveUserName!, savePassword!).then((value) =>
-      {
-        if (value.user != null)
-          {currentUser = Resource.success(data: value.user!)}
-        else
-          {currentUser = Resource.failure(value.message!) as Resource<User>}
+      await apiHelper.login(saveUserName!, savePassword!).then((value) {
+            if (value.user != null){
+              currentUser = Resource.success(data: value.user!);
+            }
+            else {
+              currentUser = Resource.failure(value.message!);
+            }
+      notifyListeners();
       });
     } else {
-      currentUser = Resource.failure("") as Resource<User>;
+      currentUser = Resource.failure("");
+      notifyListeners();
     }
   }
 
-  void login(String userName, String password) async {
+  Future<void> login(String userName, String password) async {
     await apiHelper.login(userName, password).then((value) {
       if (value.user != null) {
         currentUser = Resource.success(data: value.user!);
         SharePrefUtil.getInstance().setSaveUserName(userName);
         SharePrefUtil.getInstance().setSavePassword(password);
       } else {
-        currentUser = Resource.failure(value.message!) as Resource<User>
+        currentUser = Resource.failure(value.message!) as Resource<User>;
       }
-    }
-    );
+      notifyListeners();
+    });
   }
 }

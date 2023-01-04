@@ -4,11 +4,11 @@ class Resource<T> {
 
   Resource({this.data, this.message});
 
-  static Loading loading() {
+  factory Resource.loading() {
     return Loading();
   }
 
-  static Failure failure(String message) {
+  factory Resource.failure(String message) {
     return Failure(message);
   }
 
@@ -18,13 +18,13 @@ class Resource<T> {
 
 }
 
-class Loading extends Resource<void> {}
+class Loading<T> extends Resource<T> {}
 
 class Success<T> extends Resource<T> {
   Success({required T data, String? message})
       : super(data: data, message: message);
 }
 
-class Failure extends Resource<void> {
+class Failure<T> extends Resource<T> {
   Failure(String message) : super(message: message);
 }
