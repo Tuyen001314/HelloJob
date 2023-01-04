@@ -85,8 +85,10 @@ class ItemViewSave extends StatelessWidget {
             Container(
               child: Container(
                 margin: const EdgeInsets.only(top: 16.0),
-                child: Row(
+                child: Column(
                   children: [
+                    SizedBox(child: ItemSave()),
+                    SizedBox(child: ItemSave()),
                     SizedBox(child: ItemSave()),
                   ],
                 ),

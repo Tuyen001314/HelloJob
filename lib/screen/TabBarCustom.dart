@@ -20,13 +20,13 @@ class _TabBarSate extends State<TabBarCustom> with TickerProviderStateMixin {
             child: Align(
               alignment: Alignment.centerLeft,
               child: TabBar(
-                labelColor: Colors.black,
-                unselectedLabelColor: Colors.cyan,
+                labelColor: Colors.cyan,
+                unselectedLabelColor: Colors.black,
                 controller: _tabController,
                 tabs: [
-                  Tab(text: "1"),
-                  Tab(text: "1"),
-                  Tab(text: "1"),
+                  Tab(text: "Chi tiết"),
+                  Tab(text: "Quyền lợi"),
+                  Tab(text: "Yêu cầu"),
                 ],
               ),
             ),
