@@ -5,19 +5,23 @@ import 'package:hellojob/screen/BottomBar.dart';
 import '../constants.dart';
 
 class SignUp extends StatelessWidget {
+  const SignUp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      // resizeTo//AvoidBottomInset: false,
+      body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Row(
               children: [
                 Container(
                   margin: const EdgeInsets.only(left: 16.0, top: 60.0),
-                  child: Container(
-                    child: Image.asset('assets/images/Group1.png'),
+                  child: SizedBox(
                     height: 75.0,
+                    child: Image.asset('assets/images/Group1.png'),
                   ),
                 ),
               ],
@@ -59,12 +63,12 @@ class SignUp extends StatelessWidget {
                 Container(
                   height: 45,
                   margin: const EdgeInsets.only(left: 16.0, top: 10, right: 16),
-                  child: TextField(
+                  child: const TextField(
                     style: TextStyle(
                       fontSize: 15,
                       color: colorTenDangNhap,
                     ),
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         labelText: 'Họ tên *',
                         border: OutlineInputBorder(),
                         errorBorder: OutlineInputBorder(

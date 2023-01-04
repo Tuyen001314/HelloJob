@@ -9,6 +9,15 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController editingController = TextEditingController();
+    @override
+    void dispose() {
+      // Clean up the controller when the widget is disposed.
+      editingController.dispose();
+    }
+
+    final duplicateItems = List<String>.generate(10000, (i) => "Item $i");
+    // var items = List<String>();
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Container(
@@ -34,21 +43,34 @@ class Home extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 35,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      children: [
-                        Icon(FluentSystemIcons.ic_fluent_search_regular),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Text(
-                            "Tìm kiếm việc làm, công ty ...",
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: TextField(
+                            onChanged: (value) {},
+                            controller: editingController,
+                            decoration: InputDecoration(
+                                labelText: "Search",
+                                hintText: "Search",
+                                prefixIcon: Icon(
+                                    FluentSystemIcons.ic_fluent_search_regular),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(25.0)))),
                           ),
-                        )
+                        ),
+                        // Expanded(
+                        //   child: ListView.builder(
+                        //     shrinkWrap: true,
+                        //     // itemCount: items.length,
+                        //     itemBuilder: (context, index) {
+                        //       return ListTile(
+                        //           // title: Text('${items[index]}'),
+                        //           );
+                        //     },
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

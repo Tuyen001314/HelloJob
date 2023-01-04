@@ -43,15 +43,6 @@ class ItemDetail extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  height: 23,
-                  width: 15,
-                  margin: const EdgeInsets.only(left: 123),
-                  decoration: BoxDecoration(
-                      image: const DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage("assets/images/book.png"))),
-                ),
               ],
             ),
             Container(

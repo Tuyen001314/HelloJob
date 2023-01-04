@@ -1,0 +1,3 @@
+class FieldData {
+  const FieldData();
+}

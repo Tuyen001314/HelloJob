@@ -49,18 +49,6 @@ class ItemSave extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    Container(
-                      height: 23,
-                      width: 15,
-                      decoration: BoxDecoration(
-                          image: const DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage("assets/images/book.png"))),
-                    ),
-                  ],
-                ),
               ],
             ),
             SizedBox(

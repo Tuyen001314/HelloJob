@@ -35,37 +35,58 @@ class Profile extends StatelessWidget {
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ClipOval(
-                      //no need to provide border radius to make circular image
-                      child: Image.asset(
-                        "assets/images/yua.png",
-                        height: 60.0,
-                        width: 60.0,
-                        fit: BoxFit.cover, //change image fill type
-                      ),
+                    Row(
+                      children: [
+                        ClipOval(
+                          //no need to provide border radius to make circular image
+                          child: Image.asset(
+                            "assets/images/yua.png",
+                            height: 60.0,
+                            width: 60.0,
+                            fit: BoxFit.cover, //change image fill type
+                          ),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(left: 10, top: 8),
+                              child: Text(
+                                'Thông tin tài khoản',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(left: 30, top: 6),
+                              child: Text(
+                                'tendangnhap@gmail.com',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: colorTenDangNhap,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           margin: const EdgeInsets.only(left: 23, top: 8),
                           child: Text(
-                            'Thông tin tài khoản',
+                            'Chỉnh sửa',
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 13,
                               color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 23, top: 6),
-                          child: Text(
-                            'tendangnhap@gmail.com',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: colorTenDangNhap,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

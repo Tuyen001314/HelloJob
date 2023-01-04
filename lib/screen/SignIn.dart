@@ -6,8 +6,11 @@ import 'package:hellojob/screen/SignUp.dart';
 class SignIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passController = TextEditingController();
+
     return Scaffold(
-      body: Container(
+      body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Row(
@@ -44,6 +47,7 @@ class SignIn extends StatelessWidget {
                   height: 45,
                   margin: const EdgeInsets.only(left: 16.0, top: 24, right: 16),
                   child: TextField(
+                    controller: emailController,
                     style: TextStyle(
                       fontSize: 15,
                       color: colorTenDangNhap,
@@ -65,6 +69,7 @@ class SignIn extends StatelessWidget {
                   height: 45,
                   margin: const EdgeInsets.only(left: 16.0, top: 24, right: 16),
                   child: TextField(
+                    controller: passController,
                     style: TextStyle(
                       fontSize: 15,
                       color: colorTenDangNhap,
@@ -91,6 +96,8 @@ class SignIn extends StatelessWidget {
                       minimumSize: const Size.fromHeight(50), // NEW
                     ),
                     onPressed: () {
+                      print('log: $emailController.text');
+                      print('log: $passController.text');
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => SignUp()),
