@@ -1,11 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/screen/MainScreen.dart';
+import 'package:hellojob/util/Resource/Resource.dart';
+import 'package:provider/provider.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+class SignUp extends StatefulWidget {
+  static const String ROUTE_NAME = 'SignUp';
+
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  String _userName =  "";
+
+  String _password = '';
+
+  void register() {
+    var userState = Provider.of<UserState>(context, listen: false);
+    userState.register(_userName, _password).whenComplete(() {
+      if(userState.currentUser is Success) {
+        Navigator.of(context).popAndPushNamed("/Main");
+      } else {
+        print(userState.currentUser.message);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +112,9 @@ class SignUp extends StatelessWidget {
                       fontSize: 15,
                       color: colorTenDangNhap,
                     ),
+                    onChanged: (value) {
+                      _userName = value;
+                    },
                     decoration: const InputDecoration(
                         labelText: 'Tên đăng nhập *',
                         border: OutlineInputBorder(),
@@ -110,6 +136,9 @@ class SignUp extends StatelessWidget {
                       fontSize: 15,
                       color: colorTenDangNhap,
                     ),
+                    onChanged: (value) {
+                      _password = value;
+                    },
                     decoration: const InputDecoration(
                         labelText: 'Mật khẩu *',
                         border: OutlineInputBorder(),
@@ -209,12 +238,7 @@ class SignUp extends StatelessWidget {
                       backgroundColor: colorBGDangNhap,
                       minimumSize: const Size.fromHeight(50), // NEW
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MainScreen()),
-                      );
-                    },
+                    onPressed: register,
                     child: const Text(
                       'Đăng ký',
                       style: TextStyle(
@@ -258,5 +282,3 @@ class SignUp extends StatelessWidget {
     );
   }
 }
-
-void click() {}

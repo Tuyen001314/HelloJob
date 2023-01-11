@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hellojob/UserViewModel.dart';
+import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
 

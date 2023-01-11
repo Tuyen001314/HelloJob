@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/api/ApiHelper.dart';
 import 'package:hellojob/constants.dart';
-import 'package:hellojob/screen/SignUp.dart';
+import 'package:hellojob/util/Resource/Resource.dart';
+import 'package:provider/provider.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
+  static const String ROUTE_NAME = 'SignIn';
+
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
   String email = "";
+
   var password = "";
+
+  void login() {
+    var userState = Provider.of<UserState>(context, listen: false);
+    userState.login(email, password).whenComplete(() {
+      if (userState.currentUser is Success) {
+        Navigator.of(context).popAndPushNamed("/Main");
+      } else {
+        print(userState.currentUser);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +76,6 @@ class SignIn extends StatelessWidget {
                       fontSize: 15,
                       color: colorTenDangNhap,
                     ),
-
                     decoration: const InputDecoration(
                         labelText: 'Tên đăng nhập *',
                         border: OutlineInputBorder(),
@@ -100,7 +121,7 @@ class SignIn extends StatelessWidget {
                       backgroundColor: colorBGDangNhap,
                       minimumSize: const Size.fromHeight(50), // NEW
                     ),
-                    onPressed:() {click(email, password);},
+                    onPressed: login,
                     child: const Text(
                       'Đăng nhập',
                       style: TextStyle(
@@ -184,13 +205,4 @@ class SignIn extends StatelessWidget {
       ),
     );
   }
-}
-
-void click(email, password) {
-  var response = getAllJobs();
-  print(email + password);
-  response.whenComplete(() => print("login complete"))
-  .then((value) => value.jobs?.forEach((job) {
-    print(job.code);
-  }));
 }

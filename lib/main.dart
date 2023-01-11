@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:hellojob/UserViewModel.dart';
-import 'package:hellojob/screen/SignIn.dart';
+import 'package:hellojob/state/UserState.dart';
+import 'package:hellojob/screen/auth/SignIn.dart';
 import 'package:hellojob/screen/splash/SplashScreen.dart';
 import 'package:hellojob/util/Routes.dart';
 import 'package:hellojob/util/SharePrefUtil.dart';

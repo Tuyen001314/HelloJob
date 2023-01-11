@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hellojob/UserViewModel.dart';
+import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/screen/Home.dart';
 import 'package:hellojob/screen/MainScreen.dart';
+import 'package:hellojob/screen/auth/SignUp.dart';
 import 'package:hellojob/screen/splash/SplashScreen.dart';
 import 'package:provider/provider.dart';
+
+import '../screen/auth/SignIn.dart';
 
 class Routes {
   static MaterialPageRoute<T>? getRoute<T>(RouteSettings settings) {
@@ -19,6 +22,12 @@ class Routes {
       case "Main":
         return MaterialPageRoute(
             builder: (context) =>  const MainScreen());
+      case SignIn.ROUTE_NAME:
+        return MaterialPageRoute(
+            builder: (context) =>  SignIn());
+      case SignUp.ROUTE_NAME:
+        return MaterialPageRoute(
+            builder: (context) =>  const SignUp());
       default: return null;
     }
   }

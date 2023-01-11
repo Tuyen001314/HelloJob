@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
-import 'MainScreen.dart';
-import 'ItemView.dart';
+import '../../constants.dart';
+import '../MainScreen.dart';
+import '../ItemView.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -426,53 +426,6 @@ class Profile extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      child: Text(
-                        'Đã lưu',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      child: InkWell(
-                        onTap: () {
-                          print("you are tap");
-                        },
-                        child: Text("Xem thêm",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 10,
-                              color: colorTenDangNhap,
-                            )),
-                      ),
-                    ),
-                  ],
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 10.0, left: 0),
-                    child: Row(
-                      children: [
-                        SizedBox(child: ItemView()),
-                        Container(
-                            margin: EdgeInsets.only(left: 10.0),
-                            child: SizedBox(child: ItemView())),
-                        Container(
-                            margin: EdgeInsets.only(left: 10.0),
-                            child: SizedBox(child: ItemView())),
-                      ],
-                    ),
-                  ),
                 ),
                 Container(
                   height: 50,

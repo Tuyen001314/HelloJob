@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/screen/DetailJob.dart';
 import 'package:hellojob/screen/Home.dart';
 import 'package:hellojob/screen/ItemViewSave.dart';
+import 'package:hellojob/screen/profile/ProfileGuestScreen.dart';
+import 'package:provider/provider.dart';
 
 import '../constants.dart';
-import 'Profile.dart';
+import 'profile/Profile.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -16,25 +19,47 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenSate extends State<MainScreen> {
   int _selectedIndex = 0;
-  static final List<Widget> _widgetOptions = <Widget>[
+  late UserState _userState;
+  late Widget _currentScreen;
+
+  final List<Widget> _widgetOptions = <Widget>[
     Home(),
     ItemViewSave(),
     DetailJob(),
     Profile(),
+    ProfileGuestScreen(),
   ];
+
+
+  @override
+  void initState() {
+    super.initState();
+    _userState = Provider.of<UserState>(context, listen: false);
+    _currentScreen = _widgetOptions[0];
+    _userState.addListener(() {
+      setState(() {
+
+      });
+    });
+  }
 
   void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      if (index == 3) {
+        if (_userState.currentUser.data == null) {
+          _currentScreen = _widgetOptions[4];
+          return;
+        }
+      }
+      _currentScreen = _widgetOptions[index];
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       body: Center(
-        child: _widgetOptions[_selectedIndex],
+        child: _currentScreen,
       ),
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 20,
