@@ -54,7 +54,7 @@ class DetailJob extends StatelessWidget {
                                 image: const DecorationImage(
                                     fit: BoxFit.cover,
                                     image: AssetImage(
-                                        "assets/images/mikami.png"))),
+                                        "assets/images/gaixinh.jpg"))),
                           ),
                         ),
                         Container(

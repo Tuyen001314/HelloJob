@@ -32,7 +32,7 @@ class ItemSave extends StatelessWidget {
                       decoration: BoxDecoration(
                           image: const DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage("assets/images/yua.png"))),
+                              image: AssetImage("assets/images/gaixinh.jpg"))),
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 12),

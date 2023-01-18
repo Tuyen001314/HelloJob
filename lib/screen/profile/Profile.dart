@@ -42,7 +42,7 @@ class Profile extends StatelessWidget {
                         ClipOval(
                           //no need to provide border radius to make circular image
                           child: Image.asset(
-                            "assets/images/yua.png",
+                            "assets/images/gaixinh.jpg",
                             height: 60.0,
                             width: 60.0,
                             fit: BoxFit.cover, //change image fill type

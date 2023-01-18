@@ -27,7 +27,7 @@ class Routes {
             builder: (context) =>  SignIn());
       case SignUp.ROUTE_NAME:
         return MaterialPageRoute(
-            builder: (context) =>  const SignUp());
+            builder: (context) =>  SignUp());
       default: return null;
     }
   }
