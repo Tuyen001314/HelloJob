@@ -92,113 +92,97 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                               ? tempHeight
                               : infoHeight),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 32.0, left: 18, right: 16),
-                            child: Text(
-                              'Tết nguyên đán 2023',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 22,
-                                letterSpacing: 0.27,
-                                color: DesignCourseAppTheme.darkerText,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 16, right: 16, bottom: 8, top: 16),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  '\$28.99',
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+                              Padding(
+
+                                padding: const EdgeInsets.only(
+                                    top: 32.0, left: 18, right: 16),
+                                child: Text(
+                                  'Tết nguyên đán 2023',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
-                                    fontWeight: FontWeight.w200,
+                                    fontWeight: FontWeight.w600,
                                     fontSize: 22,
                                     letterSpacing: 0.27,
-                                    color: DesignCourseAppTheme.nearlyBlue,
+                                    color: DesignCourseAppTheme.darkerText,
                                   ),
                                 ),
-                                Container(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Text(
-                                        '4.3',
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w200,
-                                          fontSize: 22,
-                                          letterSpacing: 0.27,
-                                          color: DesignCourseAppTheme.grey,
-                                        ),
-                                      ),
-                                      Icon(
-                                        FluentSystemIcons.ic_fluent_star_filled,
-                                        color: DesignCourseAppTheme.nearlyBlue,
-                                        size: 24,
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                          AnimatedOpacity(
-                            duration: const Duration(milliseconds: 500),
-                            opacity: opacity1,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8),
-                              child: Row(
-                                children: <Widget>[
-                                  // Row(
-                                  //   children: <Widget>[
-                                  //     getButtonUI(CategoryType.ui, categoryType == CategoryType.ui),
-                                  //     const SizedBox(
-                                  //       width: 16,
-                                  //     ),
-                                  //     getButtonUI(
-                                  //         CategoryType.coding, categoryType == CategoryType.coding),
-                                  //     const SizedBox(
-                                  //       width: 16,
-                                  //     ),
-                                  //     getButtonUI(
-                                  //         CategoryType.basic, categoryType == CategoryType.basic),
-                                  //   ],
-                                  // ),
-                                ],
                               ),
-                            ),
-                          ),
-                          Expanded(
-                            child: AnimatedOpacity(
-                              duration: const Duration(milliseconds: 500),
-                              opacity: opacity2,
-                              child: Padding(
+                              Padding(
                                 padding: const EdgeInsets.only(
-                                    left: 16, right: 16, top: 8, bottom: 8),
-                                child: Text(
-                                  'Lorem ipsum is simply dummy text of printing & typesetting industry, Lorem ipsum is simply dummy text of printing & typesetting industry.',
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w200,
-                                    fontSize: 14,
-                                    letterSpacing: 0.27,
-                                    color: DesignCourseAppTheme.grey,
-                                  ),
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
+                                    left: 16, right: 16, bottom: 8, top: 16),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Text(
+                                      '\$28.99',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w200,
+                                        fontSize: 22,
+                                        letterSpacing: 0.27,
+                                        color: DesignCourseAppTheme.nearlyBlue,
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Text(
+                                            '4.3',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w200,
+                                              fontSize: 22,
+                                              letterSpacing: 0.27,
+                                              color: DesignCourseAppTheme.grey,
+                                            ),
+                                          ),
+                                          Icon(
+                                            FluentSystemIcons.ic_fluent_star_filled,
+                                            color: DesignCourseAppTheme.nearlyBlue,
+                                            size: 24,
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
                                 ),
                               ),
-
-                            ),
+                              Container(
+                                child: AnimatedOpacity(
+                                  duration: const Duration(milliseconds: 500),
+                                  opacity: opacity1,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8),
+                                    child: Row(
+                                      children: <Widget>[
+                                        getButtonUI(CategoryType.ui, categoryType == CategoryType.ui),
+                                        //getCategoryUI(),
+                                        const SizedBox(
+                                          width: 16,
+                                        ),
+                                        getButtonUI(CategoryType.coding, categoryType == CategoryType.coding),
+                                        const SizedBox(
+                                          width: 16,
+                                        ),
+                                        getButtonUI(CategoryType.basic, categoryType == CategoryType.basic),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
+
+
+
                           AnimatedOpacity(
                             duration: const Duration(milliseconds: 500),
                             opacity: opacity3,
@@ -268,9 +252,9 @@ class _CourseInfoScreenState extends State<CourseInfoScreen>
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: MediaQuery.of(context).padding.bottom,
-                          )
+                          // SizedBox(
+                          //   height: MediaQuery.of(context).padding.bottom,
+                          // )
                         ],
                       ),
                     ),
@@ -435,11 +419,11 @@ Widget getCategoryUI() {
 Widget getButtonUI(CategoryType categoryTypeData, bool isSelected) {
   String txt = '';
   if (CategoryType.ui == categoryTypeData) {
-    txt = 'Điện Ảnh';
+    txt = 'Chi tiết';
   } else if (CategoryType.coding == categoryTypeData) {
-    txt = 'May mặc';
+    txt = 'Quyền lợi';
   } else if (CategoryType.basic == categoryTypeData) {
-    txt = 'Dịch vụ';
+    txt = 'Yêu cầu';
   }
   return Expanded(
     child: Container(

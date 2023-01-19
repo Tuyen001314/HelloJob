@@ -141,7 +141,7 @@ class _DesignCourseHomeScreenState extends State<DesignCourseHomeScreen> {
   Widget getButtonUI(CategoryType categoryTypeData, bool isSelected) {
     String txt = '';
     if (CategoryType.ui == categoryTypeData) {
-      txt = 'Điện Ảnh';
+      txt = 'Điện ảnh';
     } else if (CategoryType.coding == categoryTypeData) {
       txt = 'May mặc';
     } else if (CategoryType.basic == categoryTypeData) {
