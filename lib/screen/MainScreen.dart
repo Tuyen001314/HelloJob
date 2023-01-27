@@ -8,6 +8,7 @@ import 'package:hellojob/screen/profile/ProfileGuestScreen.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
+import 'admin/HomeAdmin.dart';
 import 'profile/Profile.dart';
 
 class MainScreen extends StatefulWidget {
@@ -23,11 +24,11 @@ class _MainScreenSate extends State<MainScreen> {
   late Widget _currentScreen;
 
   final List<Widget> _widgetOptions = <Widget>[
-    Home(),
-    ItemViewSave(),
-    DetailJob(),
-    Profile(),
-    ProfileGuestScreen(),
+    const HomeAdminScreen(),
+    const ItemViewSave(),
+    const DetailJob(),
+    const Profile(),
+    const ProfileGuestScreen(),
   ];
 
 
@@ -79,17 +80,17 @@ class _MainScreenSate extends State<MainScreen> {
             backgroundColor: colorBottomNav,
           ),
           BottomNavigationBarItem(
-            icon: new Image.asset('assets/icons/connect.png'),
+            icon: Image.asset('assets/icons/connect.png'),
             label: 'Kết nối',
             backgroundColor: colorBottomNav,
           ),
           BottomNavigationBarItem(
-            icon: new Image.asset('assets/icons/suggest.png'),
+            icon: Image.asset('assets/icons/suggest.png'),
             label: 'Cẩm nang',
             backgroundColor: colorBottomNav,
           ),
           BottomNavigationBarItem(
-            icon: new Image.asset('assets/icons/profile.png'),
+            icon: Image.asset('assets/icons/profile.png'),
             label: 'Hồ sơ',
             backgroundColor: colorBottomNav,
           ),

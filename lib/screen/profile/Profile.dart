@@ -393,7 +393,7 @@ class Profile extends StatelessWidget {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(top: 12),
-                      child: Text(
+                      child: const Text(
                         'Email',
                         style: TextStyle(
                           fontSize: 11,
@@ -403,7 +403,7 @@ class Profile extends StatelessWidget {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 12),
-                      child: Text(
+                      child: const Text(
                         'tendangnhap@gmail.com',
                         style: TextStyle(
                           fontSize: 11,
@@ -420,7 +420,7 @@ class Profile extends StatelessWidget {
                           const EdgeInsets.only(top: 24.0, left: 44, right: 44),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
+                        children: const <Widget>[
                           Expanded(child: Divider()),
                         ],
                       ),
