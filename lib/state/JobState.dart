@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hellojob/model/Job.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import '../api/ApiHelper.dart' as apiHelper;
+import '../api/dto/GetAllJobResponse.dart';
 
 class JobState extends ChangeNotifier{
   static JobState? _instance;
@@ -11,7 +12,7 @@ class JobState extends ChangeNotifier{
     return _instance!;
   }
 
-  Future<void> getAllJob(int page) async{
-    // await apiHelper.getAllJobs(page).then((value) => value.jobs)
+  Future<GelAllJobResponse> getAllJob(int page) async{
+    return apiHelper.getAllJobs(page);
   }
 }

@@ -12,3 +12,6 @@ const colorText = Color(0xFF061E28);
 const colorBottomNav = Color(0xFFCEE6F4);
 const backgroundColor = Color(0xFFF0F1F3);
 const colorSignOut = Color(0xFFBA1A1A);
+
+
+const background = Color.fromARGB(100, 240, 241, 243);

@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hellojob/constants.dart';
+import 'package:hellojob/state/JobState.dart';
 import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/screen/auth/SignIn.dart';
 import 'package:hellojob/screen/splash/SplashScreen.dart';
@@ -88,10 +90,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<UserState>(
-            create: (_) => UserState.getInstance())
+            create: (_) => UserState.getInstance()),
+        ChangeNotifierProvider<JobState>(
+            create: (_) => JobState.getInstance())
       ],
       child: MaterialApp(
         title: "HelloJob",
+        theme: ThemeData(scaffoldBackgroundColor: const Color(0xffF0F1F3)),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: (settings) => Routes.getRoute(settings),
       ),

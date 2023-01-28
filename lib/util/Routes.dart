@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hellojob/screen/admin/job_manage/JobManageScreen.dart';
 import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/screen/Home.dart';
 import 'package:hellojob/screen/MainScreen.dart';
@@ -28,7 +29,10 @@ class Routes {
       case SignUp.ROUTE_NAME:
         return MaterialPageRoute(
             builder: (context) =>  const SignUp());
-      default: return null;
+      case JobManageScreen.ROUTE_NAME:
+        return MaterialPageRoute(
+            builder: (context) =>  const JobManageScreen());
+        default: return null;
     }
   }
 }
