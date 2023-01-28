@@ -35,7 +35,11 @@ class _JobManageScreenState extends State<JobManageScreen> {
             style: TextStyle(fontFamily: "Inter", fontSize: 32),
           )),
           SearchWidget(text: "", onChanged: (_) => {}, hintText: "Search job"),
-          ListJobWidget(jobState: jobState)
+          ListJobWidget(jobState: jobState),
+          TextButton(onPressed: (){}, child: Center(child: Text("Thêm")),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: secondaryContainer
+          ))
         ],
       ),
     )));

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hellojob/screen/admin/MainScreenAdmin.dart';
 import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
       userState.getUserFromLocal().then((value) {
         print("when login from local ${userState.currentUser}");
         if(userState.currentUser is Success || userState.currentUser is Failure) {
-          Navigator.of(context).pushNamed("/Main");
+          Navigator.of(context).pushNamed("/${AdminMainScreen.ROUTE_NAME}");
         }
       });
     });
