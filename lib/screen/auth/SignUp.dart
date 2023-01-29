@@ -10,6 +10,8 @@ import '../../constants.dart';
 class SignUp extends StatefulWidget {
   static const String ROUTE_NAME = 'SignUp';
 
+  const SignUp({super.key});
+
   @override
   State<SignUp> createState() => _SignUpState();
 }
@@ -54,7 +56,7 @@ class _SignUpState extends State<SignUp> {
                 Container(
                   margin:
                       const EdgeInsets.only(left: 16.0, top: 36.0, bottom: 12),
-                  child: Text(
+                  child: const Text(
                     'Đăng Ký',
                     style: TextStyle(
                       fontSize: 24,
@@ -69,7 +71,7 @@ class _SignUpState extends State<SignUp> {
               children: [
                 Container(
                   margin: const EdgeInsets.only(left: 16.0, top: 14, right: 16),
-                  child: Text(
+                  child: const Text(
                     'Thông tin tài khoản',
                     style: TextStyle(
                       fontSize: 13,

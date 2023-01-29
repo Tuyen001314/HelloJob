@@ -22,7 +22,7 @@ class Profile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(top: 12.0, bottom: 12),
+                      margin: const EdgeInsets.only(top: 12.0, bottom: 16),
                       child: Text(
                         'Hồ sơ',
                         style: TextStyle(
@@ -56,7 +56,7 @@ class Profile extends StatelessWidget {
                               child: Text(
                                 'Thông tin tài khoản',
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 15,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -67,7 +67,7 @@ class Profile extends StatelessWidget {
                               child: Text(
                                 'tendangnhap@gmail.com',
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 13,
                                   color: colorTenDangNhap,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -81,12 +81,12 @@ class Profile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          margin: const EdgeInsets.only(left: 23, top: 8),
+                          margin: const EdgeInsets.only(left: 23, top: 16),
                           child: Text(
                             'Chỉnh sửa',
                             style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.black,
+                              fontSize: 14,
+                              color: Colors.blueAccent,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -103,7 +103,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Thông tin chung',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 15,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
@@ -118,7 +118,7 @@ class Profile extends StatelessWidget {
                         child: Text("Xem thêm",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 10,
+                              fontSize: 12,
                               color: colorTenDangNhap,
                             )),
                       ),
@@ -133,7 +133,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Họ tên',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: colorTenDangNhap,
                         ),
                       ),
@@ -143,7 +143,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Kana Momonogi',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: Colors.black,
                         ),
                       ),
@@ -158,7 +158,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Số điện thoại',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: colorTenDangNhap,
                         ),
                       ),
@@ -168,7 +168,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         '0123456789',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: Colors.black,
                         ),
                       ),
@@ -183,7 +183,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Quê quán',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: colorTenDangNhap,
                         ),
                       ),
@@ -193,7 +193,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Nhật Bản',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: Colors.black,
                         ),
                       ),
@@ -208,7 +208,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Giới tính',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: colorTenDangNhap,
                         ),
                       ),
@@ -218,7 +218,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Nữ',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: Colors.black,
                         ),
                       ),
@@ -247,7 +247,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Hồ sơ',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 15,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
@@ -262,7 +262,7 @@ class Profile extends StatelessWidget {
                         child: Text("Xem thêm",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 10,
+                              fontSize: 12,
                               color: colorTenDangNhap,
                             )),
                       ),
@@ -277,7 +277,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'CMND/CCCD',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: colorTenDangNhap,
                         ),
                       ),
@@ -287,7 +287,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         '---',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: Colors.black,
                         ),
                       ),
@@ -302,7 +302,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Hộ chiếu',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: colorTenDangNhap,
                         ),
                       ),
@@ -312,7 +312,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         '0123456789',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: Colors.black,
                         ),
                       ),
@@ -341,7 +341,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Liên hệ',
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 15,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
@@ -356,7 +356,7 @@ class Profile extends StatelessWidget {
                         child: Text("Xem thêm",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 10,
+                              fontSize: 12,
                               color: colorTenDangNhap,
                             )),
                       ),
@@ -371,7 +371,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         'Số điện thoại',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: colorTenDangNhap,
                         ),
                       ),
@@ -381,7 +381,7 @@ class Profile extends StatelessWidget {
                       child: Text(
                         '0123456789',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: Colors.black,
                         ),
                       ),
@@ -393,20 +393,20 @@ class Profile extends StatelessWidget {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(top: 12),
-                      child: Text(
+                      child: const Text(
                         'Email',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: colorTenDangNhap,
                         ),
                       ),
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 12),
-                      child: Text(
+                      child: const Text(
                         'tendangnhap@gmail.com',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: Colors.black,
                         ),
                       ),
@@ -420,7 +420,7 @@ class Profile extends StatelessWidget {
                           const EdgeInsets.only(top: 24.0, left: 44, right: 44),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
+                        children: const <Widget>[
                           Expanded(child: Divider()),
                         ],
                       ),
@@ -448,7 +448,8 @@ class Profile extends StatelessWidget {
                         child: const Text(
                           'Đăng xuất',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                             color: colorSignOut,
                           ),
                         ),

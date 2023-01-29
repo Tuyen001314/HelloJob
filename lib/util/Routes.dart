@@ -6,6 +6,7 @@ import 'package:hellojob/screen/auth/SignUp.dart';
 import 'package:hellojob/screen/splash/SplashScreen.dart';
 import 'package:provider/provider.dart';
 
+import '../screen/admin/job_manage/JobManageScreen.dart';
 import '../screen/auth/SignIn.dart';
 
 class Routes {
@@ -27,8 +28,11 @@ class Routes {
             builder: (context) =>  SignIn());
       case SignUp.ROUTE_NAME:
         return MaterialPageRoute(
-            builder: (context) =>  SignUp());
-      default: return null;
+            builder: (context) =>  const SignUp());
+      case JobManageScreen.ROUTE_NAME:
+        return MaterialPageRoute(
+            builder: (context) =>  const JobManageScreen());
+        default: return null;
     }
   }
 }

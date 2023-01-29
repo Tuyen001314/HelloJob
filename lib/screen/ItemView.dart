@@ -33,7 +33,7 @@ class ItemView extends StatelessWidget {
                           image: AssetImage("assets/images/yua.png"))),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(top: 12.0, left: 12),
+                  margin: const EdgeInsets.only(top: 12.0, left: 16),
                   child: Row(
                     children: [
                       Text("Diễn viên điện ảnh",

@@ -25,10 +25,10 @@ class _MainScreenSate extends State<MainScreen> {
 
   final List<Widget> _widgetOptions = <Widget>[
     DesignCourseHomeScreen(),
-    const ItemViewSave(),
-    const DetailJob(),
-    const Profile(),
-    //const ProfileGuestScreen(),
+    // ItemViewSave(),
+    // DetailJob(),
+    Profile(),
+
   ];
 
 
@@ -46,9 +46,9 @@ class _MainScreenSate extends State<MainScreen> {
 
   void _onItemTapped(int index) {
     setState(() {
-      if (index == 3) {
+      if (index == 1) {
         if (_userState.currentUser.data == null) {
-          _currentScreen = _widgetOptions[3];
+          _currentScreen = _widgetOptions[1];
           return;
         }
       }
@@ -75,22 +75,12 @@ class _MainScreenSate extends State<MainScreen> {
         onTap: _onItemTapped,
         items: [
           BottomNavigationBarItem(
-            icon:  Image.asset('assets/icons/home.png'),
+            icon: new Image.asset('assets/icons/home.png'),
             label: "Trang chủ",
             backgroundColor: colorBottomNav,
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/connect.png'),
-            label: 'Kết nối',
-            backgroundColor: colorBottomNav,
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/suggest.png'),
-            label: 'Cẩm nang',
-            backgroundColor: colorBottomNav,
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/profile.png'),
+            icon: new Image.asset('assets/icons/profile.png'),
             label: 'Hồ sơ',
             backgroundColor: colorBottomNav,
           ),
