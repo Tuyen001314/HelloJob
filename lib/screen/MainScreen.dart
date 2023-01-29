@@ -8,6 +8,7 @@ import 'package:hellojob/screen/profile/ProfileGuestScreen.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
+import '../model/Job.dart';
 import 'admin/HomeAdmin.dart';
 import 'profile/Profile.dart';
 
@@ -26,7 +27,7 @@ class _MainScreenSate extends State<MainScreen> {
   final List<Widget> _widgetOptions = <Widget>[
     const HomeAdminScreen(),
     const ItemViewSave(),
-    const DetailJob(),
+    DetailJob(job: Job()),
     const Profile(),
     const ProfileGuestScreen(),
   ];

@@ -13,10 +13,17 @@ class SearchWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SearchWidgetState createState() => _SearchWidgetState();
+  _SearchWidgetState createState() => _SearchWidgetState(text: text, onChanged: onChanged, hintText: hintText);
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
+  final String text;
+  final ValueChanged<String> onChanged;
+  final String hintText;
+  _SearchWidgetState({
+        required this.text,
+        required this.onChanged,
+        required this.hintText,});
   final controller = TextEditingController();
 
   @override
@@ -34,26 +41,24 @@ class _SearchWidgetState extends State<SearchWidget> {
         border: Border.all(color: Colors.black26),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      // child: TextField(
-      //   decoration: InputDecoration(
-      //     icon: Icon(Icons.search, color: style.color),
-      //     suffixIcon: widget.text.isNotEmpty
-      //         ? GestureDetector(
-      //             child: Icon(Icons.close, color: style.color),
-      //             onTap: () {
-      //               controller.clear();
-      //               widget.onChanged('');
-      //               FocusScope.of(context).requestFocus(FocusNode());
-      //             },
-      //           )
-      //         : null,
-      //     hintText: widget.hintText,
-      //     hintStyle: style,
-      //     border: InputBorder.none,
-      //   ),
-      //   style: style,
-      //   onChanged: widget.onChanged,
-      // ),
+      child: TextField(
+        decoration: InputDecoration(
+          icon: Icon(Icons.search, color: style.color),
+          suffixIcon: text.isNotEmpty
+              ? GestureDetector(
+                  child: Icon(Icons.close, color: style.color),
+                  onTap: () {
+                    FocusScope.of(context).requestFocus(FocusNode());
+                  },
+                )
+              : null,
+          hintText: hintText,
+          hintStyle: style,
+          border: InputBorder.none,
+        ),
+        style: style,
+        onChanged: onChanged,
+      ),
     );
   }
 }

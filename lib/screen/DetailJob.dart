@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 
 import '../AppLayout.dart';
 import '../constants.dart';
+import '../model/Job.dart';
 import 'TabBarCustom.dart';
 
 class DetailJob extends StatelessWidget {
-  const DetailJob({Key? key}) : super(key: key);
+  static const String ROUTE_NAME = 'DetailJob';
+  final Job job;
+  const DetailJob({Key? key, required this.job}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,12 +57,12 @@ class DetailJob extends StatelessWidget {
                                 image: const DecorationImage(
                                     fit: BoxFit.cover,
                                     image: AssetImage(
-                                        "assets/images/mikami.png"))),
+                                        "assets/images/job_sample.jpeg"))),
                           ),
                         ),
                         Container(
                           margin: EdgeInsets.only(top: 10),
-                          child: Text("Diễn viên điện ảnh",
+                          child: Text(job.name!,
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,

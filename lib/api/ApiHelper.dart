@@ -53,3 +53,10 @@ Future<GelAllJobResponse> getAllJobs(int page) async {
   var httpResponse = await http.get(url);
   return GelAllJobResponse.fromJson(jsonDecode(httpResponse.body));
 }
+
+Future<GelAllJobResponse> search(String keyword) async {
+  var query = "?name=$keyword";
+  var url = "$BASE_URL/job$query";
+  var httpResponse = await http.get(url);
+  return GelAllJobResponse.fromJson(jsonDecode(httpResponse.body));
+}
