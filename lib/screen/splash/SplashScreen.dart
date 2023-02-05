@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hellojob/screen/MainScreen.dart';
 import 'package:hellojob/screen/admin/MainScreenAdmin.dart';
 import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
 
-import '../guest/JobManageScreenGuest.dart';
+import '../guest/Home.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -26,12 +27,12 @@ class _SplashScreenState extends State<SplashScreen> {
           if(userState.currentUser is Success) {
             if(userState.currentUser.data!.email == "admin1@gmail.com") {
               print("admin vo");
-              Navigator.of(context).popAndPushNamed("/${JobManageScreenGuest.ROUTE_NAME}");
+              Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
               return;
             }
           }
           print("normal vo");
-          Navigator.of(context).popAndPushNamed("/Main");
+          Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
         }
       });
     });

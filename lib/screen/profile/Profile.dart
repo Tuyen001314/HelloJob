@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hellojob/model/User.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants.dart';
@@ -10,6 +11,7 @@ import '../ItemView.dart';
 class Profile extends StatelessWidget {
   Profile({Key? key}) : super(key: key);
   late UserState _userState;
+  late User _currentUser;
 
   void logout() {
     _userState.logout();
@@ -18,7 +20,7 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _userState = Provider.of<UserState>(context, listen: false);
-
+    _currentUser = _userState.currentUser.data!;
     return Scaffold(
       backgroundColor: backgroundColor,
       body: ListView(
@@ -73,8 +75,7 @@ class Profile extends StatelessWidget {
                             ),
                             Container(
                               margin: const EdgeInsets.only(left: 30, top: 6),
-                              child: Text(
-                                'tendangnhap@gmail.com',
+                              child: Text(_currentUser.email,
                                 style: TextStyle(
                                   fontSize: 13,
                                   color: colorTenDangNhap,
@@ -149,8 +150,7 @@ class Profile extends StatelessWidget {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        'Kana Momonogi',
+                      child: Text(_currentUser.name ?? "---",
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.black,
@@ -175,7 +175,7 @@ class Profile extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(top: 12),
                       child: Text(
-                        '0123456789',
+                        _currentUser.phone ?? "---",
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.black,
@@ -184,258 +184,259 @@ class Profile extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        'Quê quán',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: colorTenDangNhap,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        'Nhật Bản',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        'Giới tính',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: colorTenDangNhap,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        'Nữ',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Container(
-                      margin:
-                          const EdgeInsets.only(top: 24.0, left: 44, right: 44),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Expanded(child: Divider()),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      child: Text(
-                        'Hồ sơ',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      child: InkWell(
-                        onTap: () {
-                          print("you are tap");
-                        },
-                        child: Text("Xem thêm",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                              color: colorTenDangNhap,
-                            )),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        'CMND/CCCD',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: colorTenDangNhap,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        '---',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        'Hộ chiếu',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: colorTenDangNhap,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        '0123456789',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Container(
-                      margin:
-                          const EdgeInsets.only(top: 24.0, left: 44, right: 44),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Expanded(child: Divider()),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      child: Text(
-                        'Liên hệ',
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      child: InkWell(
-                        onTap: () {
-                          print("you are tap");
-                        },
-                        child: Text("Xem thêm",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12,
-                              color: colorTenDangNhap,
-                            )),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        'Số điện thoại',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: colorTenDangNhap,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: Text(
-                        '0123456789',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: const Text(
-                        'Email',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: colorTenDangNhap,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 12),
-                      child: const Text(
-                        'tendangnhap@gmail.com',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Container(
-                      margin:
-                          const EdgeInsets.only(top: 24.0, left: 44, right: 44),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const <Widget>[
-                          Expanded(child: Divider()),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                Container(height: 300),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: Text(
+                //         'Quê quán',
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: colorTenDangNhap,
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: Text(
+                //         _currentUser. ?? "---",
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: Colors.black,
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: Text(
+                //         'Giới tính',
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: colorTenDangNhap,
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: Text(
+                //         'Nữ',
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: Colors.black,
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // Column(
+                //   children: [
+                //     Container(
+                //       margin:
+                //           const EdgeInsets.only(top: 24.0, left: 44, right: 44),
+                //       child: Row(
+                //         mainAxisAlignment: MainAxisAlignment.center,
+                //         children: <Widget>[
+                //           Expanded(child: Divider()),
+                //         ],
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 10),
+                //       child: Text(
+                //         'Hồ sơ',
+                //         style: TextStyle(
+                //           fontSize: 15,
+                //           color: Colors.black,
+                //           fontWeight: FontWeight.bold,
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 10),
+                //       child: InkWell(
+                //         onTap: () {
+                //           print("you are tap");
+                //         },
+                //         child: Text("Xem thêm",
+                //             style: TextStyle(
+                //               fontWeight: FontWeight.bold,
+                //               fontSize: 12,
+                //               color: colorTenDangNhap,
+                //             )),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: Text(
+                //         'CMND/CCCD',
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: colorTenDangNhap,
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: Text(
+                //         '---',
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: Colors.black,
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: Text(
+                //         'Hộ chiếu',
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: colorTenDangNhap,
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: Text(
+                //         '0123456789',
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: Colors.black,
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // Column(
+                //   children: [
+                //     Container(
+                //       margin:
+                //           const EdgeInsets.only(top: 24.0, left: 44, right: 44),
+                //       child: Row(
+                //         mainAxisAlignment: MainAxisAlignment.center,
+                //         children: <Widget>[
+                //           Expanded(child: Divider()),
+                //         ],
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 10),
+                //       child: Text(
+                //         'Liên hệ',
+                //         style: TextStyle(
+                //           fontSize: 15,
+                //           color: Colors.black,
+                //           fontWeight: FontWeight.bold,
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 10),
+                //       child: InkWell(
+                //         onTap: () {
+                //           print("you are tap");
+                //         },
+                //         child: Text("Xem thêm",
+                //             style: TextStyle(
+                //               fontWeight: FontWeight.bold,
+                //               fontSize: 12,
+                //               color: colorTenDangNhap,
+                //             )),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: Text(
+                //         'Số điện thoại',
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: colorTenDangNhap,
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: Text(
+                //         '0123456789',
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: Colors.black,
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: const Text(
+                //         'Email',
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: colorTenDangNhap,
+                //         ),
+                //       ),
+                //     ),
+                //     Container(
+                //       margin: const EdgeInsets.only(top: 12),
+                //       child: const Text(
+                //         'tendangnhap@gmail.com',
+                //         style: TextStyle(
+                //           fontSize: 12,
+                //           color: Colors.black,
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // Column(
+                //   children: [
+                //     Container(
+                //       margin:
+                //           const EdgeInsets.only(top: 24.0, left: 44, right: 44),
+                //       child: Row(
+                //         mainAxisAlignment: MainAxisAlignment.center,
+                //         children: const <Widget>[
+                //           Expanded(child: Divider()),
+                //         ],
+                //       ),
+                //     ),
+                //   ],
+                // ),
                 Container(
                   height: 50,
                   margin: const EdgeInsets.only(top: 40),
@@ -449,11 +450,7 @@ class Profile extends StatelessWidget {
                         ),
                         onPressed: () {
                           logout();
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MainScreen()),
-                          );
+                          Navigator.popAndPushNamed(context, "/${MainScreen.ROUTE_NAME}");
                         },
                         child: const Text(
                           'Đăng xuất',

@@ -9,16 +9,16 @@ import 'package:provider/provider.dart';
 import '../../../model/Job.dart';
 import '../../../widget/search_widget.dart';
 
-class JobManageScreenGuest extends StatefulWidget {
-  static const String ROUTE_NAME = 'JobManageScreen';
+class Home extends StatefulWidget {
+  static const String ROUTE_NAME = 'Home';
 
-  const JobManageScreenGuest({Key? key}) : super(key: key);
+  const Home({Key? key}) : super(key: key);
 
   @override
-  State<JobManageScreenGuest> createState() => _JobManageScreenGuestState();
+  State<Home> createState() => _HomeState();
 }
 
-class _JobManageScreenGuestState extends State<JobManageScreenGuest> {
+class _HomeState extends State<Home> {
   late JobState jobState;
   List<Job> jobs = [];
   late ListJobWidget _listJobWidget;
