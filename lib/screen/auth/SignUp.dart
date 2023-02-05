@@ -52,7 +52,7 @@ class _SignUpState extends State<SignUp> {
                   margin: const EdgeInsets.only(left: 16.0, top: 60.0),
                   child: SizedBox(
                     height: 75.0,
-                    child: Image.asset('assets/images/Group1.png'),
+                    child: Image.asset('assets/images/ic_brand.png'),
                   ),
                 ),
               ],

@@ -61,7 +61,7 @@ class _SignInState extends State<SignIn> {
                 Container(
                   margin: const EdgeInsets.only(left: 16.0, top: 60.0),
                   child: Container(
-                    child: Image.asset('assets/images/Group1.png'),
+                    child: Image.asset('assets/images/ic_brand.png'),
                     height: 75.0,
                   ),
                 ),

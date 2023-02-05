@@ -82,6 +82,10 @@ class Job {
     data['representative'] = this.representative;
     return data;
   }
+  
+  String? getAddress() {
+    return fieldData?.firstWhere((element) => element.key == "Nơi làm việc")?.value?.toString();
+  }
 }
 
 class TagIds {

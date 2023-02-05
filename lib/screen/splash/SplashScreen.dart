@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
           if(userState.currentUser is Success) {
             if(userState.currentUser.data!.email == "admin1@gmail.com") {
               print("admin vo");
-              Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
+              Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
               return;
             }
           }
