@@ -5,6 +5,8 @@ import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
 
+import '../guest/JobManageScreenGuest.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -24,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
           if(userState.currentUser is Success) {
             if(userState.currentUser.data!.email == "admin1@gmail.com") {
               print("admin vo");
-              Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
+              Navigator.of(context).popAndPushNamed("/${JobManageScreenGuest.ROUTE_NAME}");
               return;
             }
           }

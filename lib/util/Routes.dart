@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hellojob/screen/DetailJob.dart';
 import 'package:hellojob/screen/admin/MainScreenAdmin.dart';
 import 'package:hellojob/screen/admin/job_manage/JobManageScreen.dart';
+import 'package:hellojob/screen/guest/JobManageScreenGuest.dart';
 import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/screen/Home.dart';
 import 'package:hellojob/screen/MainScreen.dart';

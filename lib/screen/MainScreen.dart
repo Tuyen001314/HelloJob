@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hellojob/screen/admin/job_manage/JobManageScreen.dart';
 import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/screen/DetailJob.dart';
 import 'package:hellojob/screen/Home.dart';
@@ -10,6 +11,7 @@ import 'package:provider/provider.dart';
 import '../constants.dart';
 import '../model/Job.dart';
 import 'admin/HomeAdmin.dart';
+import 'guest/JobManageScreenGuest.dart';
 import 'profile/Profile.dart';
 
 class MainScreen extends StatefulWidget {
@@ -25,7 +27,7 @@ class _MainScreenSate extends State<MainScreen> {
   late Widget _currentScreen;
 
   final List<Widget> _widgetOptions = <Widget>[
-    const Home(),
+    const JobManageScreenGuest(),
     const ItemViewSave(),
     DetailJob(job: Job()),
     Profile(),
