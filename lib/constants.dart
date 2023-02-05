@@ -16,3 +16,5 @@ const colorSignOut = Color(0xFFBA1A1A);
 
 const background = Color.fromARGB(100, 240, 241, 243);
 const secondaryContainer = Color(0xffCEE6F4);
+const dividerColor = Color(0xffAAAAAA);
+const errorColor = colorSignOut;
