@@ -15,4 +15,8 @@ class JobState extends ChangeNotifier{
   Future<GelAllJobResponse> getAllJob(int page) async{
     return apiHelper.getAllJobs(page);
   }
+
+  Future<GelAllJobResponse> search(String keyword) async{
+    return apiHelper.search(keyword);
+  }
 }

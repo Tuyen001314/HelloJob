@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hellojob/screen/DetailJob.dart';
+import 'package:hellojob/screen/admin/MainScreenAdmin.dart';
+import 'package:hellojob/screen/admin/job_manage/JobManageScreen.dart';
 import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/screen/Home.dart';
 import 'package:hellojob/screen/MainScreen.dart';
@@ -6,7 +9,7 @@ import 'package:hellojob/screen/auth/SignUp.dart';
 import 'package:hellojob/screen/splash/SplashScreen.dart';
 import 'package:provider/provider.dart';
 
-import '../screen/admin/job_manage/JobManageScreen.dart';
+import '../model/Job.dart';
 import '../screen/auth/SignIn.dart';
 
 class Routes {
@@ -32,6 +35,14 @@ class Routes {
       case JobManageScreen.ROUTE_NAME:
         return MaterialPageRoute(
             builder: (context) =>  const JobManageScreen());
+      case AdminMainScreen.ROUTE_NAME:
+        return MaterialPageRoute(
+            builder: (context) =>  const AdminMainScreen());
+      case DetailJob.ROUTE_NAME:
+        var job = settings.arguments as Job;
+        return MaterialPageRoute(
+            builder: (context) =>  DetailJob(job: job));
+
         default: return null;
     }
   }

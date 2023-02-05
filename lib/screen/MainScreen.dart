@@ -8,7 +8,8 @@ import 'package:hellojob/screen/profile/ProfileGuestScreen.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
-import '../design_course/home_design_course.dart';
+import '../model/Job.dart';
+import 'admin/HomeAdmin.dart';
 import 'profile/Profile.dart';
 
 class MainScreen extends StatefulWidget {
@@ -24,11 +25,11 @@ class _MainScreenSate extends State<MainScreen> {
   late Widget _currentScreen;
 
   final List<Widget> _widgetOptions = <Widget>[
-    DesignCourseHomeScreen(),
+    const HomeAdminScreen(),
     const ItemViewSave(),
-    const DetailJob(),
+    DetailJob(job: Job()),
     const Profile(),
-    //const ProfileGuestScreen(),
+    const ProfileGuestScreen(),
   ];
 
 
@@ -48,7 +49,7 @@ class _MainScreenSate extends State<MainScreen> {
     setState(() {
       if (index == 3) {
         if (_userState.currentUser.data == null) {
-          _currentScreen = _widgetOptions[3];
+          _currentScreen = _widgetOptions[4];
           return;
         }
       }
@@ -75,7 +76,7 @@ class _MainScreenSate extends State<MainScreen> {
         onTap: _onItemTapped,
         items: [
           BottomNavigationBarItem(
-            icon:  Image.asset('assets/icons/home.png'),
+            icon: new Image.asset('assets/icons/home.png'),
             label: "Trang chủ",
             backgroundColor: colorBottomNav,
           ),
