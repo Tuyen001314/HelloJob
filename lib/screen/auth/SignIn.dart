@@ -1,9 +1,9 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hellojob/constants.dart';
 import 'package:hellojob/screen/auth/SignUp.dart';
 import 'package:hellojob/state/UserState.dart';
-import 'package:hellojob/api/ApiHelper.dart';
-import 'package:hellojob/constants.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
 
@@ -18,17 +18,18 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   String email = "";
-
+  bool _isObscure = true;
   var password = "";
 
   void login() {
     var userState = Provider.of<UserState>(context, listen: false);
     userState.login(email, password).whenComplete(() {
-      if(userState.currentUser is! Loading) {
-        if(userState.currentUser is Success) {
-          if(userState.currentUser.data!.email == "admin1@gmail.com") {
+      if (userState.currentUser is! Loading) {
+        if (userState.currentUser is Success) {
+          if (userState.currentUser.data!.email == "admin1@gmail.com") {
             print("admin vo");
-            Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
+            Navigator.of(context)
+                .popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
             return;
           }
         }
@@ -39,12 +40,12 @@ class _SignInState extends State<SignIn> {
   }
 
   void register() {
-        Navigator.of(context).popAndPushNamed("/${SignUp.ROUTE_NAME}");
-
+    Navigator.of(context).pushNamed("/${SignUp.ROUTE_NAME}");
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -107,6 +108,9 @@ class _SignInState extends State<SignIn> {
                   height: 45,
                   margin: const EdgeInsets.only(left: 16.0, top: 24, right: 16),
                   child: TextField(
+                    obscureText: _isObscure,
+                    enableSuggestions: false,
+                    autocorrect: false,
                     onChanged: (value) {
                       password = value;
                     },
@@ -114,12 +118,21 @@ class _SignInState extends State<SignIn> {
                       fontSize: 15,
                       color: colorTenDangNhap,
                     ),
-                    decoration: const InputDecoration(
-                        labelText: 'Mật khẩu *',
-                        border: OutlineInputBorder(),
-                        errorBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.red, width: 8))),
+                    decoration:  InputDecoration(
+                      labelText: 'Mật khẩu *',
+                      // suffixIcon: IconButton(
+                      //     icon: Icon(_isObscure
+                      //         ? FluentSystemIcons.ic_fluent_eye_show_filled
+                      //         :  FluentSystemIcons.ic_fluent_eye_hide_filled),
+                      //     onPressed: () {
+                      //       setState(() {
+                      //         _isObscure = !_isObscure;
+                      //       });
+                      //     }),
+                      border: OutlineInputBorder(),
+                      errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red, width: 8)),
+                    ),
                   ),
                 ),
               ],
@@ -189,7 +202,6 @@ class _SignInState extends State<SignIn> {
                         onPressed: register,
                         child: const Text('Đăng ký'),
                       ),
-
                     ],
                   ),
                 ],
