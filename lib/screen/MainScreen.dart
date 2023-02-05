@@ -25,10 +25,10 @@ class _MainScreenSate extends State<MainScreen> {
   late Widget _currentScreen;
 
   final List<Widget> _widgetOptions = <Widget>[
-    const HomeAdminScreen(),
+    const Home(),
     const ItemViewSave(),
     DetailJob(job: Job()),
-    const Profile(),
+    Profile(),
     const ProfileGuestScreen(),
   ];
 

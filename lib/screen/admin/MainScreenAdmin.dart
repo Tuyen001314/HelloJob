@@ -18,7 +18,7 @@ class _AdminMainScreenState extends State<AdminMainScreen> {
 
   final List<Widget> _screens = <Widget>[
     const HomeAdminScreen(),
-    const Profile(),
+    Profile(),
   ];
 
   @override

@@ -10,6 +10,7 @@ import 'package:hellojob/screen/splash/SplashScreen.dart';
 import 'package:provider/provider.dart';
 
 import '../model/Job.dart';
+import '../screen/admin/job_manage/EditJobScreen.dart';
 import '../screen/auth/SignIn.dart';
 
 class Routes {
@@ -42,7 +43,10 @@ class Routes {
         var job = settings.arguments as Job;
         return MaterialPageRoute(
             builder: (context) =>  DetailJob(job: job));
-
+      case EditJobScreen.ROUTE_NAME:
+        var job = settings.arguments as Job;
+        return MaterialPageRoute(
+            builder: (context) =>  EditJobScreen(job: job));
         default: return null;
     }
   }

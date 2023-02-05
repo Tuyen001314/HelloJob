@@ -38,21 +38,17 @@ class JobItem extends StatelessWidget {
                             image:
                                 AssetImage("assets/images/job_sample.jpeg"))),
                   ),
-                  // Container(
-                  //   margin: const EdgeInsets.only(top: 12.0, left: 12),
-                  //   child:
-                  //   Text(job.name!,
-                  //       overflow: TextOverflow.ellipsis,
-                  //       softWrap: false,
-                  //       style: const TextStyle(
-                  //         fontWeight: FontWeight.bold,
-                  //         fontSize: 12,
-                  //         color: CupertinoColors.black,
-                  //       )).applyConstraint(
-                  //   ),
-                  //
-                  // ),
-                ],
+
+                    Text(job.name!,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: false,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                          color: CupertinoColors.black,
+                        )).applyConstraint(
+                    )
+        ]
               ),
               Container(
                 margin: const EdgeInsets.only(top: 8),

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
+import 'package:hellojob/screen/admin/job_manage/EditJobScreen.dart';
+import 'package:hellojob/util/ToastExt.dart';
 
 import '../AppLayout.dart';
 import '../constants.dart';
@@ -192,7 +194,12 @@ class DetailJob extends StatelessWidget {
               shrinkWrap: true,
               physics: AlwaysScrollableScrollPhysics(),
             )),
-            _BottomLayout(onDelete: () {}, onEdit: () {})
+            _BottomLayout(
+                onDelete: () {toast("Coming soon");},
+                onEdit: () {
+                  Navigator.pushNamed(context, "/${EditJobScreen.ROUTE_NAME}",
+                      arguments: job);
+                })
           ],
         ),
       ),
@@ -231,13 +238,13 @@ class _BottomLayout extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: ElevatedButton(
-              onPressed: onDelete,
+              onPressed: onEdit,
               child: const Text("Sửa",
                   style: TextStyle(
                       fontFamily: "Inter",
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: errorColor))),
+                      color: onSurfaceColor))),
         ).applyConstraint(
             width: matchConstraint, topRightTo: parent, left: guideline.right)
       ],

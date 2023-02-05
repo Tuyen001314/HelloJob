@@ -1,15 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants.dart';
+import '../../state/UserState.dart';
 import '../MainScreen.dart';
 import '../ItemView.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({Key? key}) : super(key: key);
+  Profile({Key? key}) : super(key: key);
+  late UserState _userState;
+
+  void logout() {
+    _userState.logout();
+  }
 
   @override
   Widget build(BuildContext context) {
+    _userState = Provider.of<UserState>(context, listen: false);
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: ListView(
@@ -439,6 +448,7 @@ class Profile extends StatelessWidget {
                           minimumSize: const Size.fromHeight(50), // NEW
                         ),
                         onPressed: () {
+                          logout();
                           Navigator.push(
                             context,
                             MaterialPageRoute(

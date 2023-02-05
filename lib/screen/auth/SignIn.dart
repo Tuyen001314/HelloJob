@@ -6,6 +6,8 @@ import 'package:hellojob/constants.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
 
+import '../admin/MainScreenAdmin.dart';
+
 class SignIn extends StatefulWidget {
   static const String ROUTE_NAME = 'SignIn';
 
@@ -21,10 +23,16 @@ class _SignInState extends State<SignIn> {
   void login() {
     var userState = Provider.of<UserState>(context, listen: false);
     userState.login(email, password).whenComplete(() {
-      if (userState.currentUser is Success) {
+      if(userState.currentUser is! Loading) {
+        if(userState.currentUser is Success) {
+          if(userState.currentUser.data!.email == "admin1@gmail.com") {
+            print("admin vo");
+            Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
+            return;
+          }
+        }
+        print("normal vo");
         Navigator.of(context).popAndPushNamed("/Main");
-      } else {
-        print(userState.currentUser);
       }
     });
   }
@@ -70,7 +78,7 @@ class _SignInState extends State<SignIn> {
                   margin: const EdgeInsets.only(left: 16.0, top: 24, right: 16),
                   child: TextField(
                     onChanged: (value) {
-                      email = value;
+                      email = value.trim();
                     },
                     style: const TextStyle(
                       fontSize: 15,
