@@ -41,7 +41,7 @@ class ItemViewSave extends StatelessWidget {
                         Text(
                           "Đã lưu",
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -52,7 +52,7 @@ class ItemViewSave extends StatelessWidget {
                           child: Text("See all",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 10,
+                                fontSize: 12,
                                 color: colorTenDangNhap,
                               )),
                         )
@@ -82,18 +82,18 @@ class ItemViewSave extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              child: Container(
-                margin: const EdgeInsets.only(top: 16.0),
-                child: Column(
-                  children: [
-                    SizedBox(child: ItemSave()),
-                    SizedBox(child: ItemSave()),
-                    SizedBox(child: ItemSave()),
-                  ],
-                ),
-              ),
-            ),
+            // Container(
+            //   child: Container(
+            //     margin: const EdgeInsets.only(top: 16.0),
+            //     child: Column(
+            //       children: [
+            //         SizedBox(child: ItemSave()),
+            //         SizedBox(child: ItemSave()),
+            //         SizedBox(child: ItemSave()),
+            //       ],
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),

@@ -1,3 +1,4 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 
 class SearchWidget extends StatefulWidget {
@@ -43,7 +44,7 @@ class _SearchWidgetState extends State<SearchWidget> {
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: TextField(
         decoration: InputDecoration(
-          icon: Icon(Icons.search, color: style.color),
+          icon: Icon(FluentSystemIcons.ic_fluent_search_filled, color: style.color),
           suffixIcon: text.isNotEmpty
               ? GestureDetector(
                   child: Icon(Icons.close, color: style.color),

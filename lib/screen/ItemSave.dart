@@ -11,7 +11,7 @@ class ItemSave extends StatelessWidget {
     final size = AppLayout.getSize(context);
     return SizedBox(
       child: Container(
-        height: 138,
+        height: 125,
         width: size.width - 32,
         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         decoration: BoxDecoration(
@@ -19,6 +19,7 @@ class ItemSave extends StatelessWidget {
           color: Colors.white,
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,39 +29,41 @@ class ItemSave extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(),
                       height: 60,
-                      width: 60,
+                      width: 70,
                       decoration: BoxDecoration(
                           image: const DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage("assets/images/yua.png"))),
+                              image: AssetImage("assets/images/gaixinh.jpg"))),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(left: 12),
-                      child: Row(
+                      margin: const EdgeInsets.only(left: 8),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Diễn viên điện ảnh",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 13,
+                                fontSize: 15,
                                 color: CupertinoColors.black,
                               )),
+                          SizedBox(
+                            child: Container(
+                              margin: const EdgeInsets.only(top: 8),
+                              child: Text(
+                                  "Đóng các bộ phim tâm lý, tình cảm gia đình, công sở bệnh viện",
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: CupertinoColors.black,
+                                  ),),
+                            ),
+                          ),
                         ],
                       ),
                     ),
                   ],
                 ),
               ],
-            ),
-            SizedBox(
-              child: Container(
-                margin: const EdgeInsets.only(top: 8),
-                child: Text(
-                    "Đóng các bộ phim tâm lý, tình cảm gia đình, công sở bệnh viện",
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: CupertinoColors.black,
-                    )),
-              ),
             ),
             Row(
               children: [
@@ -75,10 +78,11 @@ class ItemSave extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("100 triệu",
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             color: CupertinoColors.black,
                           )),
                     ],
@@ -95,10 +99,11 @@ class ItemSave extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text("Hiroshima",
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 11,
                             color: CupertinoColors.black,
                           )),
                     ],
