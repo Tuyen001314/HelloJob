@@ -1,20 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hellojob/screen/admin/job_manage/JobManageScreen.dart';
-import 'package:hellojob/state/UserState.dart';
+import 'package:hellojob/screen/CommingSoonScreen.dart';
 import 'package:hellojob/screen/DetailJob.dart';
-import 'package:hellojob/screen/Home.dart';
 import 'package:hellojob/screen/ItemViewSave.dart';
 import 'package:hellojob/screen/profile/ProfileGuestScreen.dart';
+import 'package:hellojob/state/UserState.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
 import '../model/Job.dart';
-import 'admin/HomeAdmin.dart';
-import 'guest/JobManageScreenGuest.dart';
+import 'guest/Home.dart';
 import 'profile/Profile.dart';
 
 class MainScreen extends StatefulWidget {
+  static const String ROUTE_NAME = 'MainScreen';
   const MainScreen({Key? key}) : super(key: key);
 
   @override
@@ -27,13 +26,13 @@ class _MainScreenSate extends State<MainScreen> {
   late Widget _currentScreen;
 
   final List<Widget> _widgetOptions = <Widget>[
-    const JobManageScreenGuest(),
-    const ItemViewSave(),
-    DetailJob(job: Job()),
+    const Home(),
+    const CommingSoonScreen(),
+    // DetailJob(job: Job()),
+    const CommingSoonScreen(),
     Profile(),
     const ProfileGuestScreen(),
   ];
-
 
   @override
   void initState() {
@@ -41,9 +40,7 @@ class _MainScreenSate extends State<MainScreen> {
     _userState = Provider.of<UserState>(context, listen: false);
     _currentScreen = _widgetOptions[0];
     _userState.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
     });
   }
 

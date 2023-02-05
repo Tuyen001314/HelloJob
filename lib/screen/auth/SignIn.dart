@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hellojob/state/UserState.dart';
-import 'package:hellojob/api/ApiHelper.dart';
 import 'package:hellojob/constants.dart';
+import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
+import 'package:hellojob/util/ToastExt.dart';
 import 'package:provider/provider.dart';
 
+import '../MainScreen.dart';
 import '../admin/MainScreenAdmin.dart';
 
 class SignIn extends StatefulWidget {
@@ -23,17 +24,21 @@ class _SignInState extends State<SignIn> {
   void login() {
     var userState = Provider.of<UserState>(context, listen: false);
     userState.login(email, password).whenComplete(() {
-      if(userState.currentUser is! Loading) {
-        if(userState.currentUser is Success) {
-          if(userState.currentUser.data!.email == "admin1@gmail.com") {
-            print("admin vo");
-            Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
-            return;
-          }
-        }
-        print("normal vo");
-        Navigator.of(context).popAndPushNamed("/Main");
+      var currentUser = userState.currentUser;
+      if (userState.currentUser is Failure) {
+        toast(currentUser.message!);
+        return;
       }
+      if (userState.currentUser is Success) {
+        if (userState.currentUser.data!.email == "admin1@gmail.com") {
+          print("admin vo");
+          Navigator.of(context)
+              .popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
+          return;
+        }
+      }
+      print("normal vo");
+      Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
     });
   }
 

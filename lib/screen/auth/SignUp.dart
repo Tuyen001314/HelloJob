@@ -6,6 +6,7 @@ import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants.dart';
+import '../../util/ToastExt.dart';
 
 class SignUp extends StatefulWidget {
   static const String ROUTE_NAME = 'SignUp';
@@ -24,10 +25,15 @@ class _SignUpState extends State<SignUp> {
   void register() {
     var userState = Provider.of<UserState>(context, listen: false);
     userState.register(_userName, _password).whenComplete(() {
-      if(userState.currentUser is Success) {
+      var currentUser = userState.currentUser;
+      if (currentUser is Failure) {
+        toast(currentUser.message!);
+        return;
+      }
+      if(currentUser is Success) {
         Navigator.of(context).popAndPushNamed("/Main");
       } else {
-        print(userState.currentUser.message);
+        print(currentUser.message);
       }
     });
   }
