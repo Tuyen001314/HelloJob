@@ -1,3 +1,4 @@
+import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hellojob/state/UserState.dart';
@@ -19,7 +20,6 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   String _userName =  "";
-
   String _password = '';
 
   void register() {
@@ -140,6 +140,9 @@ class _SignUpState extends State<SignUp> {
                   height: 45,
                   margin: const EdgeInsets.only(left: 16.0, top: 6, right: 16),
                   child: TextField(
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
                     style: TextStyle(
                       fontSize: 15,
                       color: colorTenDangNhap,
@@ -147,8 +150,18 @@ class _SignUpState extends State<SignUp> {
                     onChanged: (value) {
                       _password = value;
                     },
-                    decoration: const InputDecoration(
+
+                    decoration: InputDecoration(
                         labelText: 'Mật khẩu *',
+                        // suffixIcon: IconButton(
+                        //     icon: Icon(_isObscure
+                        //         ? FluentSystemIcons.ic_fluent_eye_show_filled
+                        //         :  FluentSystemIcons.ic_fluent_eye_hide_filled),
+                        //     onPressed: () {
+                        //       setState(() {
+                        //         _isObscure = !_isObscure;
+                        //       });
+                        //     }),
                         border: OutlineInputBorder(),
                         errorBorder: OutlineInputBorder(
                             borderSide:
@@ -164,12 +177,24 @@ class _SignUpState extends State<SignUp> {
                   height: 45,
                   margin: const EdgeInsets.only(left: 16.0, top: 6, right: 16),
                   child: TextField(
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
                     style: TextStyle(
                       fontSize: 15,
                       color: colorTenDangNhap,
                     ),
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                         labelText: 'Xác nhận mật khẩu *',
+                        // suffixIcon: IconButton(
+                        //     icon: Icon(_isObscure2
+                        //         ? FluentSystemIcons.ic_fluent_eye_show_filled
+                        //         :  FluentSystemIcons.ic_fluent_eye_hide_filled),
+                        //     onPressed: () {
+                        //       setState(() {
+                        //         _isObscure2 = !_isObscure2;
+                        //       });
+                        //     }),
                         border: OutlineInputBorder(),
                         errorBorder: OutlineInputBorder(
                             borderSide:
