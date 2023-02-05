@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hellojob/screen/auth/SignUp.dart';
 import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/api/ApiHelper.dart';
 import 'package:hellojob/constants.dart';
@@ -35,6 +36,11 @@ class _SignInState extends State<SignIn> {
         Navigator.of(context).popAndPushNamed("/Main");
       }
     });
+  }
+
+  void register() {
+        Navigator.of(context).popAndPushNamed("/${SignUp.ROUTE_NAME}");
+
   }
 
   @override
@@ -176,7 +182,14 @@ class _SignInState extends State<SignIn> {
                       Text(
                         "Chưa có tài khoản? ",
                       ),
-                      Text("Đăng ký", style: TextStyle(color: colorDangKy)),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(color: colorDangKy),
+                        ),
+                        onPressed: register,
+                        child: const Text('Đăng ký'),
+                      ),
+
                     ],
                   ),
                 ],
