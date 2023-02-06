@@ -1,6 +1,8 @@
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hellojob/screen/admin/MainScreenAdmin.dart';
+import 'package:hellojob/screen/guest/Home.dart';
 import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/screen/MainScreen.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
@@ -31,9 +33,11 @@ class _SignUpState extends State<SignUp> {
         return;
       }
       if(currentUser is Success) {
-        Navigator.of(context).popAndPushNamed("/Main");
-      } else {
-        print(currentUser.message);
+        if(currentUser.data!.isAdmin()) {
+          Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
+        } else {
+          Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
+        }
       }
     });
   }
