@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hellojob/constants.dart';
 import 'package:hellojob/screen/auth/SignUp.dart';
+import 'package:hellojob/screen/guest/Home.dart';
 import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
@@ -24,17 +25,20 @@ class _SignInState extends State<SignIn> {
   void login() {
     var userState = Provider.of<UserState>(context, listen: false);
     userState.login(email, password).whenComplete(() {
-      if (userState.currentUser is! Loading) {
-        if (userState.currentUser is Success) {
-          if (userState.currentUser.data!.email == "admin1@gmail.com") {
-            print("admin vo");
-            Navigator.of(context)
-                .popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
-            return;
-          }
+      if (userState.currentUser is Success) {
+        if (userState.currentUser.data!.email.contains("admin")) {
+          print("admin vo");
+          Navigator.of(context)
+              .popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
+          return;
+        } else {
+          print("normal vo");
+          Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
         }
+      }
+      if (userState.currentUser is Failure) {
         print("normal vo");
-        Navigator.of(context).popAndPushNamed("/Main");
+        Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
       }
     });
   }

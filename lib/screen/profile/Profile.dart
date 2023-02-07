@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hellojob/model/User.dart';
+import 'package:hellojob/screen/admin/job_manage/EditJobScreen.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants.dart';
+import '../../model/Job.dart';
 import '../../state/UserState.dart';
 import '../MainScreen.dart';
 import '../ItemView.dart';
 
 class Profile extends StatelessWidget {
+
   Profile({Key? key}) : super(key: key);
   late UserState _userState;
   late User _currentUser;
@@ -21,6 +24,10 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     _userState = Provider.of<UserState>(context, listen: false);
     _currentUser = _userState.currentUser.data!;
+
+    void edit() {
+      Navigator.of(context).pushNamed("/${EditJobScreen.ROUTE_NAME}");
+    }
     return Scaffold(
       backgroundColor: backgroundColor,
       body: ListView(
@@ -92,12 +99,14 @@ class Profile extends StatelessWidget {
                       children: [
                         Container(
                           margin: const EdgeInsets.only(left: 23, top: 16),
-                          child: Text(
-                            'Chỉnh sửa',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.blueAccent,
-                              fontWeight: FontWeight.bold,
+                          child: TextButton(
+                            child: const Text('Chỉnh sửa'),
+                            onPressed: edit,
+                            style: TextButton.styleFrom(
+                              textStyle: const TextStyle(fontSize: 14,
+                                color: Colors.blueAccent,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

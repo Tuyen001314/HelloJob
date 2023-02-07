@@ -1,13 +1,13 @@
-import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hellojob/state/UserState.dart';
-import 'package:hellojob/screen/MainScreen.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants.dart';
+import '../../state/UserState.dart';
 import '../../util/ToastExt.dart';
+import '../admin/MainScreenAdmin.dart';
+import '../guest/Home.dart';
 
 class SignUp extends StatefulWidget {
   static const String ROUTE_NAME = 'SignUp';
@@ -19,7 +19,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  String _userName =  "";
+  String _userName = "";
   String _password = '';
 
   void register() {
@@ -30,10 +30,13 @@ class _SignUpState extends State<SignUp> {
         toast(currentUser.message!);
         return;
       }
-      if(currentUser is Success) {
-        Navigator.of(context).popAndPushNamed("/Main");
+      if (currentUser is Success) {
+        print("admin vo");
+        Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
+        return;
       } else {
         print(currentUser.message);
+        Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
       }
     });
   }
@@ -150,7 +153,6 @@ class _SignUpState extends State<SignUp> {
                     onChanged: (value) {
                       _password = value;
                     },
-
                     decoration: InputDecoration(
                         labelText: 'Mật khẩu *',
                         // suffixIcon: IconButton(

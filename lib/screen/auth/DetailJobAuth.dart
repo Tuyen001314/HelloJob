@@ -4,9 +4,12 @@ import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
 import 'package:hellojob/screen/admin/job_manage/EditJobScreen.dart';
 import 'package:hellojob/util/ToastExt.dart';
 
-import '../AppLayout.dart';
-import '../constants.dart';
-import '../model/Job.dart';
+import '../../AppLayout.dart';
+import '../../constants.dart';
+import '../../constants.dart';
+import '../../constants.dart';
+import '../../constants.dart';
+import '../../model/Job.dart';
 
 class DetailJob extends StatelessWidget {
   static const String ROUTE_NAME = 'DetailJob';
@@ -194,12 +197,12 @@ class DetailJob extends StatelessWidget {
               shrinkWrap: true,
               physics: AlwaysScrollableScrollPhysics(),
             )),
-            _BottomLayout(
-                onDelete: () {toast("Coming soon");},
-                onEdit: () {
-                  Navigator.pushNamed(context, "/${EditJobScreen.ROUTE_NAME}",
-                      arguments: job);
-                })
+            _BottomLayout(onSave: () {
+              toast("Coming soon");
+            }, onEdit: () {
+              Navigator.pushNamed(context, "/${EditJobScreen.ROUTE_NAME}",
+                  arguments: job);
+            })
           ],
         ),
       ),
@@ -208,10 +211,10 @@ class DetailJob extends StatelessWidget {
 }
 
 class _BottomLayout extends StatelessWidget {
-  final VoidCallback onDelete;
+  final VoidCallback onSave;
   final VoidCallback onEdit;
 
-  const _BottomLayout({Key? key, required this.onDelete, required this.onEdit})
+  const _BottomLayout({Key? key, required this.onSave, required this.onEdit})
       : super(key: key);
 
   @override
@@ -223,20 +226,19 @@ class _BottomLayout extends StatelessWidget {
         Guideline(id: guideline, guidelinePercent: 0.5),
         Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: ElevatedButton(
-              onPressed: onDelete,
-              style: ElevatedButton.styleFrom(
-                  primary: colorBGDangNhap,
-              )  ,
-              child: const Text("Xóa",
-
-
-                  style: TextStyle(
-                      fontFamily: "Inter",
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: errorColor)),
-            ))
+                child: ElevatedButton(
+                  onPressed: onSave,
+                  child: const Text("Lưu"),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: background,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                      textStyle: TextStyle(
+                          fontFamily: "Inter",
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black54)),
+                ))
             .applyConstraint(
                 width: matchConstraint,
                 topLeftTo: parent,
@@ -250,7 +252,7 @@ class _BottomLayout extends StatelessWidget {
                       fontFamily: "Inter",
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white))),
+                      color: onSurfaceColor))),
         ).applyConstraint(
             width: matchConstraint, topRightTo: parent, left: guideline.right)
       ],
