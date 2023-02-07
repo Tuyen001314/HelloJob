@@ -26,32 +26,26 @@ class _SignInState extends State<SignIn> {
     var userState = Provider.of<UserState>(context, listen: false);
     userState.login(email, password).whenComplete(() {
       if (userState.currentUser is Success) {
-<<<<<<< HEAD
         if (userState.currentUser.data!.email.contains("admin")) {
-=======
         if (userState.currentUser.data!.isAdmin()) {
->>>>>>> 1463ee96f089d26a30840de6ae5dc449bfdb0ed2
           print("admin vo");
           Navigator.of(context)
               .popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
           return;
         } else {
           print("normal vo");
-<<<<<<< HEAD
           Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
         }
       }
       if (userState.currentUser is Failure) {
         print("normal vo");
         Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
-=======
           Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
         }
       }
       if (userState.currentUser is Failure) {
         print("ko thanh cong");
         Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
->>>>>>> 1463ee96f089d26a30840de6ae5dc449bfdb0ed2
       }
     });
   }

@@ -1,20 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-=======
+import 'package:hellojob/screen/MainScreen.dart';
 import 'package:hellojob/screen/admin/MainScreenAdmin.dart';
 import 'package:hellojob/screen/guest/Home.dart';
 import 'package:hellojob/state/UserState.dart';
-import 'package:hellojob/screen/MainScreen.dart';
->>>>>>> 1463ee96f089d26a30840de6ae5dc449bfdb0ed2
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
 
 import '../../constants.dart';
-import '../../state/UserState.dart';
 import '../../util/ToastExt.dart';
-import '../admin/MainScreenAdmin.dart';
-import '../guest/Home.dart';
 
 class SignUp extends StatefulWidget {
   static const String ROUTE_NAME = 'SignUp';
@@ -37,7 +31,6 @@ class _SignUpState extends State<SignUp> {
         toast(currentUser.message!);
         return;
       }
-<<<<<<< HEAD
       if (currentUser is Success) {
         print("admin vo");
         Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
@@ -45,14 +38,14 @@ class _SignUpState extends State<SignUp> {
       } else {
         print(currentUser.message);
         Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
-=======
-      if(currentUser is Success) {
-        if(currentUser.data!.isAdmin()) {
-          Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
-        } else {
-          Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
+        if (currentUser is Success) {
+          if (currentUser.data!.isAdmin()) {
+            Navigator.of(context)
+                .popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
+          } else {
+            Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
+          }
         }
->>>>>>> 1463ee96f089d26a30840de6ae5dc449bfdb0ed2
       }
     });
   }
