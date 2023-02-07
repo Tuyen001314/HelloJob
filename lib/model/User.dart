@@ -46,6 +46,10 @@ class User {
     jobId = json['jobId'];
     companyId = json['companyId'];
   }
+  
+  bool isAdmin() {
+    return email.contains('admin');
+  }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();

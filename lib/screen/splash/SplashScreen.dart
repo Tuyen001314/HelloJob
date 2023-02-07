@@ -23,17 +23,22 @@ class _SplashScreenState extends State<SplashScreen> {
       var userState = Provider.of<UserState>(context, listen: false);
       userState.getUserFromLocal().then((value) {
         print("when login from local ${userState.currentUser}");
-        if(userState.currentUser is! Loading) {
-          if(userState.currentUser is Success) {
-            if(userState.currentUser.data!.email == "admin1@gmail.com") {
-              print("admin vo");
-              Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
-              return;
-            }
+        if(userState.currentUser is Success) {
+          if (userState.currentUser.data!.isAdmin()) {
+            print("admin vo");
+            Navigator.of(context).popAndPushNamed(
+                "/${AdminMainScreen.ROUTE_NAME}");
+            return;
+          } else {
+            print("normal vo");
+            Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
           }
-          print("normal vo");
+        }
+        if(userState.currentUser is Failure) {
+          print("ko thanh cong");
           Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
         }
+
       });
     });
       return Scaffold(

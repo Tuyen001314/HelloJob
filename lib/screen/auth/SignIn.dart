@@ -1,7 +1,7 @@
-import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hellojob/constants.dart';
+import 'package:hellojob/screen/MainScreen.dart';
 import 'package:hellojob/screen/auth/SignUp.dart';
 import 'package:hellojob/screen/guest/Home.dart';
 import 'package:hellojob/state/UserState.dart';
@@ -26,19 +26,32 @@ class _SignInState extends State<SignIn> {
     var userState = Provider.of<UserState>(context, listen: false);
     userState.login(email, password).whenComplete(() {
       if (userState.currentUser is Success) {
+<<<<<<< HEAD
         if (userState.currentUser.data!.email.contains("admin")) {
+=======
+        if (userState.currentUser.data!.isAdmin()) {
+>>>>>>> 1463ee96f089d26a30840de6ae5dc449bfdb0ed2
           print("admin vo");
           Navigator.of(context)
               .popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
           return;
         } else {
           print("normal vo");
+<<<<<<< HEAD
           Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
         }
       }
       if (userState.currentUser is Failure) {
         print("normal vo");
         Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
+=======
+          Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
+        }
+      }
+      if (userState.currentUser is Failure) {
+        print("ko thanh cong");
+        Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
+>>>>>>> 1463ee96f089d26a30840de6ae5dc449bfdb0ed2
       }
     });
   }
@@ -49,7 +62,6 @@ class _SignInState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -122,7 +134,7 @@ class _SignInState extends State<SignIn> {
                       fontSize: 15,
                       color: colorTenDangNhap,
                     ),
-                    decoration:  InputDecoration(
+                    decoration: InputDecoration(
                       labelText: 'Mật khẩu *',
                       // suffixIcon: IconButton(
                       //     icon: Icon(_isObscure
