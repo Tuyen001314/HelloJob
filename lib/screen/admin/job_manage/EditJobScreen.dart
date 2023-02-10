@@ -4,6 +4,7 @@ import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../model/Job.dart';
+import '../../../widget/CustomAppBar.dart';
 
 class EditJobScreen extends StatelessWidget {
   static const String ROUTE_NAME = 'EditJobScreen';
@@ -18,26 +19,14 @@ class EditJobScreen extends StatelessWidget {
     var editFields = getFieldsOfJob(job);
     var editKeys = editFields.keys.toList();
     return SafeArea(child: Scaffold(
+      appBar: CustomAppBar(
+        title:"Sửa công việc",
+        onBackPress: () => Navigator.pop(context),
+      ),
       body:  Padding(
         padding: EdgeInsets.all(8),
         child: ConstraintLayout(
           children: [
-            SvgPicture.asset("assets/icons/ic_back.svg").applyConstraint(
-                id: ivBack,
-                topLeftTo: parent
-            ),
-
-            Text(
-              "Sửa công việc",
-              style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: "Inter"
-              ),
-            ).applyConstraint(
-                left: ivBack.right,
-                topRightTo: parent
-            ),
 
             // Expanded(child: ListView.separated(
             //     itemBuilder: (context, position) {
