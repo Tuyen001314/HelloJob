@@ -11,7 +11,7 @@ class ItemSave extends StatelessWidget {
     final size = AppLayout.getSize(context);
     return SizedBox(
       child: Container(
-        height: 125,
+        height: 120,
         width: size.width - 32,
         padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         decoration: BoxDecoration(
@@ -29,7 +29,7 @@ class ItemSave extends StatelessWidget {
                     Container(
                       margin: const EdgeInsets.only(),
                       height: 60,
-                      width: 70,
+                      width: 60,
                       decoration: BoxDecoration(
                           image: const DecorationImage(
                               fit: BoxFit.cover,

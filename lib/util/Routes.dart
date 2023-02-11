@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hellojob/screen/DetailJob.dart';
 import 'package:hellojob/screen/MainScreen.dart';
 import 'package:hellojob/screen/admin/MainScreenAdmin.dart';
+import 'package:hellojob/screen/admin/job_manage/AddJobScreen.dart';
 import 'package:hellojob/screen/admin/job_manage/JobManageScreen.dart';
 import 'package:hellojob/screen/auth/SignUp.dart';
 import 'package:hellojob/screen/splash/SplashScreen.dart';
@@ -35,6 +36,9 @@ class Routes {
       case EditJobScreen.ROUTE_NAME:
         var job = settings.arguments as Job;
         return MaterialPageRoute(builder: (context) => EditJobScreen(job: job));
+      case AddJobScreen.ROUTE_NAME:
+        var job = settings.arguments as Job;
+        return MaterialPageRoute(builder: (context) => AddJobScreen());
       default:
         return null;
     }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hellojob/screen/CommingSoonScreen.dart';
 import 'package:hellojob/screen/DetailJob.dart';
+import 'package:hellojob/screen/ItemDetail.dart';
 import 'package:hellojob/screen/ItemViewSave.dart';
 import 'package:hellojob/screen/profile/ProfileGuestScreen.dart';
 import 'package:hellojob/state/UserState.dart';
@@ -27,11 +28,10 @@ class _MainScreenSate extends State<MainScreen> {
 
   final List<Widget> _widgetOptions = <Widget>[
     const Home(),
-    const CommingSoonScreen(),
+    const ItemViewSave(),
     // DetailJob(job: Job()),
     const CommingSoonScreen(),
     Profile(),
-    const ProfileGuestScreen(),
   ];
 
   @override
@@ -48,7 +48,7 @@ class _MainScreenSate extends State<MainScreen> {
     setState(() {
       if (index == 3) {
         if (_userState.currentUser.data == null) {
-          _currentScreen = _widgetOptions[4];
+          _currentScreen = const ProfileGuestScreen();
           return;
         }
       }

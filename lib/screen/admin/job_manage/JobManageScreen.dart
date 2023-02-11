@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hellojob/constants.dart';
 import 'package:hellojob/screen/DetailJob.dart';
+import 'package:hellojob/screen/admin/job_manage/AddJobScreen.dart';
 import 'package:hellojob/state/JobState.dart';
 import 'package:hellojob/widget/JobItem.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +44,9 @@ class _JobManageScreenState extends State<JobManageScreen> {
               hintText: "Search job"),
           _listJobWidget,
           TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed("/${AddJobScreen.ROUTE_NAME}");
+              },
               child: Center(child: Text("Thêm")),
               style:
                   ElevatedButton.styleFrom(backgroundColor: secondaryContainer))

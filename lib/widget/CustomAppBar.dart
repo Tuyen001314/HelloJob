@@ -17,7 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       btBackWidget = InkWell(
           onTap: onBackPress,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16.0),
             child: SvgPicture.asset("assets/icons/ic_back.svg"),
           ));
     } else {
@@ -25,7 +25,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     }
     return ConstraintLayout(
       children: [
-        btBackWidget.applyConstraint(topLeftTo: parent),
+        btBackWidget.applyConstraint(centerVerticalTo: parent, centerLeftTo: parent),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(title,

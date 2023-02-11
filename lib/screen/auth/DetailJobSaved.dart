@@ -4,9 +4,10 @@ import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
 import 'package:hellojob/screen/admin/job_manage/EditJobScreen.dart';
 import 'package:hellojob/util/ToastExt.dart';
 
+import '../../AppLayout.dart';
+import '../../constants.dart';
+import '../../model/Job.dart';
 import '../AppLayout.dart';
-import '../constants.dart';
-import '../model/Job.dart';
 
 class DetailJob extends StatelessWidget {
   static const String ROUTE_NAME = 'DetailJob';
@@ -220,7 +221,7 @@ class _BottomLayout extends StatelessWidget {
     return ConstraintLayout(
       height: 44,
       children: [
-        Guideline(id: guideline, guidelinePercent: 0.5),
+        Guideline(id: guideline, guidelinePercent: 1),
         Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: ElevatedButton(
@@ -228,31 +229,31 @@ class _BottomLayout extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   primary: colorBGDangNhap,
               )  ,
-              child: const Text("Xóa",
+              child: const Text("Đã Lưu",
 
 
                   style: TextStyle(
                       fontFamily: "Inter",
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: errorColor)),
+                      color: Colors.blueAccent)),
             ))
             .applyConstraint(
-                width: matchConstraint,
+                width: 160,
                 topLeftTo: parent,
                 right: guideline.left),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: ElevatedButton(
-              onPressed: onEdit,
-              child: const Text("Sửa",
-                  style: TextStyle(
-                      fontFamily: "Inter",
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white))),
-        ).applyConstraint(
-            width: matchConstraint, topRightTo: parent, left: guideline.right)
+        // Padding(
+        //   padding: const EdgeInsets.symmetric(horizontal: 8),
+        //   child: ElevatedButton(
+        //       onPressed: onEdit,
+        //       child: const Text("Sửa",
+        //           style: TextStyle(
+        //               fontFamily: "Inter",
+        //               fontSize: 16,
+        //               fontWeight: FontWeight.w600,
+        //               color: Colors.white))),
+        // ).applyConstraint(
+        //     width: matchConstraint, topRightTo: parent, left: guideline.right)
       ],
     );
   }

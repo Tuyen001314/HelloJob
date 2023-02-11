@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:hellojob/constants.dart';
 import 'package:hellojob/screen/MainScreen.dart';
 import 'package:hellojob/screen/auth/SignUp.dart';
+import 'package:hellojob/screen/guest/Home.dart';
 import 'package:hellojob/state/UserState.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,11 @@ class _SignInState extends State<SignIn> {
           return;
         } else {
           print("normal vo");
+          Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
+        }
+      if (userState.currentUser is Failure) {
+        print("normal vo");
+        Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
           Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
         }
       }

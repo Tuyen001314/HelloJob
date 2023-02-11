@@ -1,10 +1,9 @@
-import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hellojob/screen/MainScreen.dart';
 import 'package:hellojob/screen/admin/MainScreenAdmin.dart';
 import 'package:hellojob/screen/guest/Home.dart';
 import 'package:hellojob/state/UserState.dart';
-import 'package:hellojob/screen/MainScreen.dart';
 import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +20,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  String _userName =  "";
+  String _userName = "";
   String _password = '';
 
   void register() {
@@ -32,11 +31,20 @@ class _SignUpState extends State<SignUp> {
         toast(currentUser.message!);
         return;
       }
-      if(currentUser is Success) {
-        if(currentUser.data!.isAdmin()) {
-          Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
-        } else {
-          Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
+      if (currentUser is Success) {
+        print("admin vo");
+        Navigator.of(context).popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
+        return;
+      } else {
+        print(currentUser.message);
+        Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
+        if (currentUser is Success) {
+          if (currentUser.data!.isAdmin()) {
+            Navigator.of(context)
+                .popAndPushNamed("/${AdminMainScreen.ROUTE_NAME}");
+          } else {
+            Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
+          }
         }
       }
     });
@@ -154,7 +162,6 @@ class _SignUpState extends State<SignUp> {
                     onChanged: (value) {
                       _password = value;
                     },
-
                     decoration: InputDecoration(
                         labelText: 'Mật khẩu *',
                         // suffixIcon: IconButton(
