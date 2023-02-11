@@ -22,3 +22,6 @@ const errorColor = colorSignOut;
 const onSurfaceColor = Color(0xff40484C);
 const surfaceVariant = Color(0xffDCE3E9);
 const neturalVariant = Color(0xff585F64);
+
+const primaryColor = Color(0xff006686);
+const primary80 = Color(0xff6FD2FF);

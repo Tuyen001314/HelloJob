@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hellojob/constants.dart';
-import 'package:hellojob/screen/DetailJob.dart';
+import 'package:hellojob/screen/job/DetailJob.dart';
 import 'package:hellojob/screen/admin/job_manage/AddJobScreen.dart';
 import 'package:hellojob/state/JobState.dart';
 import 'package:hellojob/widget/JobItem.dart';

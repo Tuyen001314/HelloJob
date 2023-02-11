@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hellojob/state/UserState.dart';
-import 'package:hellojob/screen/DetailJob.dart';
-import 'package:hellojob/screen/ItemViewSave.dart';
+import 'package:hellojob/screen/job/DetailJob.dart';
+import 'package:hellojob/screen/job/SaveJobScreen.dart';
 import 'package:hellojob/screen/profile/ProfileGuestScreen.dart';
 import 'package:provider/provider.dart';
 

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hellojob/constants.dart';
-import 'package:hellojob/screen/DetailJob.dart';
+import 'package:hellojob/screen/job/DetailJob.dart';
 import 'package:hellojob/state/JobState.dart';
 import 'package:hellojob/widget/JobItem.dart';
 import 'package:provider/provider.dart';
@@ -68,7 +67,7 @@ class _HomeState extends State<Home> {
   }
 
   void search(String keyword) {
-    if(keyword.isNotEmpty) {
+    if (keyword.isNotEmpty) {
       jobState.search(keyword).then((value) {
         if (value.jobs != null) {
           jobs = value.jobs!;
@@ -102,9 +101,12 @@ class ListJobWidgetState extends State<ListJobWidget> {
     return Expanded(
         child: ListView.separated(
             itemBuilder: (context, position) {
-              return JobItem(job: jobs[position], onPress: () {
-                Navigator.of(context).pushNamed("/${DetailJob.ROUTE_NAME}", arguments: jobs[position]);
-              });
+              return JobItem(
+                  job: jobs[position],
+                  onPress: () {
+                    Navigator.of(context).pushNamed("/${DetailJob.ROUTE_NAME}",
+                        arguments: jobs[position]);
+                  });
             },
             separatorBuilder: (context, position) {
               return Divider(

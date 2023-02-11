@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hellojob/screen/DetailJob.dart';
+import 'package:hellojob/screen/job/DetailJob.dart';
 import 'package:hellojob/screen/MainScreen.dart';
 import 'package:hellojob/screen/admin/MainScreenAdmin.dart';
 import 'package:hellojob/screen/admin/job_manage/AddJobScreen.dart';
