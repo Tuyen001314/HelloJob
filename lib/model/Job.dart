@@ -84,6 +84,7 @@ class Job {
   }
   
   String? getAddress() {
+    if(fieldData?.length ==0) return null;
     return fieldData?.firstWhere((element) => element.key == "Nơi làm việc")?.value?.toString();
   }
 }

@@ -194,12 +194,12 @@ class DetailJob extends StatelessWidget {
               shrinkWrap: true,
               physics: AlwaysScrollableScrollPhysics(),
             )),
-            _BottomLayout(
-                onDelete: () {toast("Coming soon");},
-                onEdit: () {
-                  Navigator.pushNamed(context, "/${EditJobScreen.ROUTE_NAME}",
-                      arguments: job);
-                })
+            _BottomLayout(onDelete: () {
+              toast("Coming soon");
+            }, onEdit: () {
+              Navigator.pushNamed(context, "/${EditJobScreen.ROUTE_NAME}",
+                  arguments: job);
+            })
           ],
         ),
       ),
@@ -223,20 +223,18 @@ class _BottomLayout extends StatelessWidget {
         Guideline(id: guideline, guidelinePercent: 0.5),
         Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: ElevatedButton(
-              onPressed: onDelete,
-              style: ElevatedButton.styleFrom(
-                  primary: colorBGDangNhap,
-              )  ,
-              child: const Text("Xóa",
-
-
-                  style: TextStyle(
-                      fontFamily: "Inter",
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: errorColor)),
-            ))
+                child: ElevatedButton(
+                  onPressed: onDelete,
+                  style: ElevatedButton.styleFrom(
+                    primary: colorBGDangNhap,
+                  ),
+                  child: const Text("Xóa",
+                      style: TextStyle(
+                          fontFamily: "Inter",
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: errorColor)),
+                ))
             .applyConstraint(
                 width: matchConstraint,
                 topLeftTo: parent,

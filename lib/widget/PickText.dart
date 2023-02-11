@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PickTimeView extends StatefulWidget {
-  DateTime time = DateTime.now();
-  Function(DateTime)? onTimeChanged;
+  DateTime? time = DateTime.now();
+  Function(DateTime?)? onTimeChanged;
 
   PickTimeView(this.time, this.onTimeChanged);
 
@@ -13,21 +13,25 @@ class PickTimeView extends StatefulWidget {
 }
 
 class _PickTimeViewState extends State<PickTimeView> {
-  DateTime time = DateTime.now();
-  Function(DateTime)? onTimeChanged;
+  DateTime? time = DateTime.now();
+  Function(DateTime?)? onTimeChanged;
 
-  _PickTimeViewState newTime(DateTime time) {
+  _PickTimeViewState newTime(DateTime? time) {
     this.time = time;
     return this;
   }
 
-  _PickTimeViewState onChanged(Function(DateTime)? callback) {
+  _PickTimeViewState onChanged(Function(DateTime?)? callback) {
     onTimeChanged = callback;
     return this;
   }
 
   String parseTime() {
-    return "${time.day}/${time.month}/${time.year}";
+    if(time != null) {
+      return "${time!.day}/${time!.month}/${time!.year}";
+    } else {
+      return "Nhấn để nhập";
+    }
   }
 
   @override
@@ -36,13 +40,15 @@ class _PickTimeViewState extends State<PickTimeView> {
       onTap: () {
         showDatePicker(
                 context: context,
-                initialDate: time,
+                initialDate: time ?? DateTime.now(),
                 firstDate: DateTime(2000),
                 lastDate: DateTime(2030))
             .then((time) {
           setState(() {
-            this.time = time!;
-            onTimeChanged != null ? (time) : null;
+            this.time = time;
+            if(onTimeChanged != null) {
+              onTimeChanged!(time);
+            }
           });
         });
       },

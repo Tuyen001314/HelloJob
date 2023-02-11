@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:hellojob/api/dto/LoginResponseDto.dart';
@@ -6,6 +7,8 @@ import 'package:http/http.dart' as http;
 
 import 'dto/GetAllJobResponse.dart';
 import 'dto/RegisterErrorDto.dart';
+import 'dto/UpdateProfileDto.dart';
+import 'dto/UpdateProfileResponseDto.dart';
 
 const BASE_URL = "https://job-portal.hieuhm.com";
 
@@ -40,13 +43,6 @@ Future<RefreshTokenResponseDto> refreshToken(String refreshToken) async {
   return RefreshTokenResponseDto.fromJson(jsonDecode(httpResponse.body));
 }
 
-
-// Future<GelAllJobResponse> getAllJobs() async {
-//   var url = "$BASE_URL/job";
-//   var httpResponse = await http.get(url);
-//   return GelAllJobResponse.fromJson(jsonDecode(httpResponse.body));
-// }
-
 Future<GelAllJobResponse> getAllJobs(int page) async {
   var query = "?page=$page";
   var url = "$BASE_URL/job$query";
@@ -59,4 +55,19 @@ Future<GelAllJobResponse> search(String keyword) async {
   var url = "$BASE_URL/job$query";
   var httpResponse = await http.get(url);
   return GelAllJobResponse.fromJson(jsonDecode(httpResponse.body));
+}
+
+Future<UpdateProfileResponseDto> updateProfile(String token, UpdateProfileDto dto) async {
+  var url = "$BASE_URL/user/update-profile";
+  print(token);
+  Map<String, String> headers = {
+    "Content-type": "application/json",
+    'Authorization': 'Bearer $token'
+  };
+  var httpResponse = await http.put(
+      url,
+    headers: headers,
+    body: jsonEncode(dto.toJson()));
+  print(httpResponse.body);
+  return UpdateProfileResponseDto.fromJson(jsonDecode(httpResponse.body));
 }

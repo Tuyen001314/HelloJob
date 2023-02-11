@@ -51,6 +51,34 @@ class User {
     return email.contains('admin');
   }
 
+  String? getAddress() {
+    String? address;
+    for (var element in fieldData!) {
+
+      if(element.key == "CURRENT_ADDRESS") {
+        if(element.value != null) {
+          address = element.value!;
+          break;
+        }
+      }
+    };
+    return address;
+  }
+
+
+  String? getGender() {
+    var gender = null;
+    for (var element in fieldData!) {
+      if(element.key == "GENDER") {
+        if(element.value != null) {
+          gender = element.value!;
+          break;
+        }
+      }
+    }
+    return gender;
+  }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['email'] = this.email;

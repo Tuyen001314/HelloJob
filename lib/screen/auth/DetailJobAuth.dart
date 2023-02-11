@@ -6,9 +6,6 @@ import 'package:hellojob/util/ToastExt.dart';
 
 import '../../AppLayout.dart';
 import '../../constants.dart';
-import '../../constants.dart';
-import '../../constants.dart';
-import '../../constants.dart';
 import '../../model/Job.dart';
 
 class DetailJob extends StatelessWidget {

@@ -33,11 +33,10 @@ class _SignInState extends State<SignIn> {
           return;
         } else {
           print("normal vo");
-          Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
+          Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
         }
       if (userState.currentUser is Failure) {
         print("normal vo");
-        Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
           Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
         }
       }

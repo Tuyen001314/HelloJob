@@ -9,6 +9,7 @@ import '../../model/Job.dart';
 import '../../state/UserState.dart';
 import '../MainScreen.dart';
 import '../ItemView.dart';
+import 'UpdateProfileScreen.dart';
 
 class Profile extends StatelessWidget {
 
@@ -26,7 +27,7 @@ class Profile extends StatelessWidget {
     _currentUser = _userState.currentUser.data!;
 
     void edit() {
-      Navigator.of(context).pushNamed("/${EditJobScreen.ROUTE_NAME}");
+      Navigator.of(context).pushNamed("/${UpdateProfileScreen.ROUTE_NAME}");
     }
     return Scaffold(
       backgroundColor: backgroundColor,

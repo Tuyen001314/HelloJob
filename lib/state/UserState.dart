@@ -5,6 +5,7 @@ import 'package:hellojob/util/Resource/Resource.dart';
 import 'package:hellojob/util/SharePrefUtil.dart';
 
 import '../api/ApiHelper.dart' as apiHelper;
+import '../api/dto/UpdateProfileDto.dart';
 import '../model/User.dart';
 
 class UserState extends ChangeNotifier {
@@ -16,7 +17,6 @@ class UserState extends ChangeNotifier {
   }
 
   String _accessToken = '';
-
 
   String get accessToken => _accessToken;
 
@@ -32,6 +32,7 @@ class UserState extends ChangeNotifier {
     if (saveUserName?.isNotEmpty == true && savePassword?.isNotEmpty == true) {
       await apiHelper.login(saveUserName!, savePassword!).then((value) {
         if (value.user != null) {
+          _accessToken = value.accessToken!;
           currentUser = Resource.success(data: value.user!);
         } else {
           currentUser = Resource.failure(value.message!);
@@ -48,6 +49,7 @@ class UserState extends ChangeNotifier {
     await apiHelper.login(userName, password).then((value) {
       print(value.message);
       if (value.user != null) {
+        _accessToken = value.accessToken!;
         currentUser = Resource.success(data: value.user!);
         SharePrefUtil.getInstance().setSaveUserName(userName);
         SharePrefUtil.getInstance().setSavePassword(password);
@@ -90,5 +92,21 @@ class UserState extends ChangeNotifier {
         }
       });
     }
+  }
+
+  Future<bool> updateProfile(
+      String? name, String? phone, DateTime? birthday) async {
+    var dto = UpdateProfileDto(
+        name: name, phone: phone, dob: birthday?.toIso8601String());
+    return await apiHelper.updateProfile(accessToken, dto).then((value) {
+      print(value.user);
+      if (value.user != null) {
+        currentUser = Resource.success(data: value.user!);
+        notifyListeners();
+        return Future(() => true);
+      } else {
+        return Future(() => false);
+      }
+    });
   }
 }

@@ -26,7 +26,7 @@ class _MainScreenSate extends State<MainScreen> {
   late UserState _userState;
   late Widget _currentScreen;
 
-  final List<Widget> _widgetOptions = <Widget>[
+  List<Widget> _widgetOptions = <Widget>[
     const Home(),
     const ItemViewSave(),
     // DetailJob(job: Job()),
@@ -40,7 +40,17 @@ class _MainScreenSate extends State<MainScreen> {
     _userState = Provider.of<UserState>(context, listen: false);
     _currentScreen = _widgetOptions[0];
     _userState.addListener(() {
-      setState(() {});
+      print("change");
+      setState(() {
+        _widgetOptions = <Widget>[
+          const Home(),
+          const ItemViewSave(),
+          // DetailJob(job: Job()),
+          const CommingSoonScreen(),
+          Profile(),
+        ];
+
+      });
     });
   }
 

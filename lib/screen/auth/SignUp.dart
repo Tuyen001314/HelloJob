@@ -37,7 +37,7 @@ class _SignUpState extends State<SignUp> {
         return;
       } else {
         print(currentUser.message);
-        Navigator.of(context).popAndPushNamed("/${Home.ROUTE_NAME}");
+        Navigator.of(context).popAndPushNamed("/${MainScreen.ROUTE_NAME}");
         if (currentUser is Success) {
           if (currentUser.data!.isAdmin()) {
             Navigator.of(context)
