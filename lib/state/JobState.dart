@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hellojob/api/dto/CreateJobDto.dart';
 import 'package:hellojob/model/Job.dart';
 
 import '../api/ApiHelper.dart' as apiHelper;
@@ -38,4 +39,36 @@ class JobState extends ChangeNotifier {
       return true;
     }
   }
+
+  Future<void> addJob(String name, String jobDescription, String description, int salary,
+      {List<FieldData>? fieldDatas}) async {
+    var dto = CreateJobDto(
+      name: name,
+      jobDescription: jobDescription,
+      code: DateTime.now().microsecondsSinceEpoch.toString(),
+      description: description,
+      salary: salary,
+      recruitment: "tesst",
+      salaryType: "MONTH",
+      tagIds: ["633c5ed1ff8cbc093e7289ef"],
+      status: 1,
+      title: "njbk",
+      fieldData: [
+        FieldData.fromJson({
+          "key" : "Nơi làm việc",
+          "value": "Tokyo"
+        })
+      ],
+      isHot: false,
+      isCheck: false
+    );
+    await apiHelper.createJob(dto).then((value) {
+      print(value);
+    });
+  }
+  Future<bool> delete(Job job) async {
+    return apiHelper.delete(job);
+  }
 }
+
+

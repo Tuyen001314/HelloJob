@@ -3,146 +3,158 @@ import 'package:flutter/material.dart';
 import 'package:flutter_constraintlayout/flutter_constraintlayout.dart';
 import 'package:hellojob/util/ToastExt.dart';
 import 'package:hellojob/widget/CustomAppBar.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
+import '../../../state/JobState.dart';
 import '../../../widget/PickText.dart';
 
-class AddJobScreen extends StatelessWidget {
+class AddJobScreen extends StatefulWidget {
   static const String ROUTE_NAME = 'AddJobScreen';
 
-  AddJobScreen({Key? key}) : super(key: key);
+  AddJobScreen() {
 
-  late Map<String, String> map;
+  }
+
+
+  @override
+  State<AddJobScreen> createState() => _AddJobScreenState();
+}
+
+class _AddJobScreenState extends State<AddJobScreen> {
+  late JobState _jobState;
   late List<String> params;
-  List<GlobalKey<FormState>> textFieldKeys = [];
+  late Map<String, String?> map;
+
+  @override
+  void initState() {
+    super.initState();
+    map = getListJobParams();
+    params = map.keys.toList();
+    _jobState = Provider.of<JobState>(context, listen: false);
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    map = getListJobParams();
-    params = getListJobParams().keys.toList();
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(
-          title: "Thêm công việc",
-          onBackPress: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        body: Padding(
-            padding: EdgeInsets.zero,
-            child: Column(
-              children: [
-                Expanded(
-                        child: ListView.separated(
-                            itemBuilder: (context, position) {
-                              var title = ConstraintId("title");
-                              return Padding(
-                                  padding: EdgeInsets.all(8),
-                                  child: ConstraintLayout(children: [
-                                    Text(
-                                      params[position]!,
-                                      style: const TextStyle(
-                                          color: Color(0x80000000),
-                                          fontFamily: 'Inter',
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 11),
-                                    ).applyConstraint(
-                                      width: 125,
-                                      topLeftTo: parent,
-                                      bottomLeftTo: parent,
-                                      id: title,
-                                    ),
-                                    SizedBox(
-                                            child: createValueWidget(
-                                                context, params[position]))
-                                        .applyConstraint(
-                                            height: wrapContent,
-                                            width: 190,
-                                            left: title.right,
-                                            centerRightTo: parent)
-                                  ]));
-                            },
-                            separatorBuilder: (context, positision) {
-                              return Divider(height: 1);
-                            },
-                            itemCount: params.length))
-                    .applyConstraint(centerTo: parent),
-                Container(
-                  margin: EdgeInsets.all(8),
-                  child: _BottomLayout(onSave: () {
+          appBar: CustomAppBar(
+            title: "Thêm công việc",
+            onBackPress: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          body: Column(
+            children: [
+              Expanded(
+                  child: ListView.separated(
+                      itemBuilder: (context, position) {
+                        var title = ConstraintId("title");
+                        return Padding(
+                            padding: EdgeInsets.all(8),
+                            child: ConstraintLayout(children: [
+                              Text(
+                                params[position]!,
+                                style: const TextStyle(
+                                    color: Color(0x80000000),
+                                    fontFamily: 'Inter',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 11),
+                              ).applyConstraint(
+                                width: 125,
+                                topLeftTo: parent,
+                                bottomLeftTo: parent,
+                                id: title,
+                              ),
+                              SizedBox(
+                                      child: createValueWidget(
+                                          context, params[position]))
+                                  .applyConstraint(
+                                      height: wrapContent,
+                                      width: 190,
+                                      left: title.right,
+                                      centerRightTo: parent)
+                            ]));
+                      },
+                      separatorBuilder: (context, positision) {
+                        return Divider(height: 1);
+                      },
+                      itemCount: params.length)),
+              Container(
+                margin: EdgeInsets.all(8),
+                child: _BottomLayout(onSave: () {
+                  try {
                     if (validAllField()) {
-                      toast("Something went wrong");
+                      _jobState.addJob(map["Tên"]!, map["Mô tả"]!,
+                          map["Mô tả ngắn gọn"]!, int.parse(map["Lương tháng"]!));
+                    } else {
+                      toast("Bạn phải điền hết các thông tin");
                     }
-                  }, onCancel: () {
-                    Navigator.of(context).pop();
-                  }),
-                )
-              ],
-            )),
-      ),
+                  } on FormatException catch(e) {
+                    toast(e.message);
+                  }
+
+
+                }, onCancel: () {
+                  Navigator.of(context).pop();
+                }),
+              )
+            ],
+          )),
     );
   }
 
-  Map<String, String> getListJobParams() {
+  Map<String, String?> getListJobParams() {
+    print("getfds");
     return {
-      "Tên": "Nhấn để nhập",
-      "Mô tả": "Nhấn để nhập",
-      "Mô tả ngắn gọn": "Nhấn để nhập",
-      "Lương tháng": "Nhấn để nhập",
-      "Ngày dự tuyển": "Nhấn để nhập",
-      'Ngày tuyển': "Nhấn để nhập",
-      "Người đại diện": "Nhấn để nhập",
-      "Địa chỉ": "Nhấn để nhập",
-      "Nơi làm việc": "Nhấn để nhập",
-      "Ngành nghề": "Nhấn để nhập",
-      "Thời hạn nộp hồ sơ": "Nhấn để nhập",
-      "Số lượng": "Nhấn để nhập",
-      "Tuổi": "Nhấn để nhập",
-      "Học vấn": "Nhấn để nhập",
-      "Các yêu cầu khác": "Nhấn để nhập",
-      "Ghi chú": "Nhấn để nhập"
+      "Tên": null,
+      "Mô tả": null,
+      "Mô tả ngắn gọn": null,
+      "Lương tháng": null,
     };
   }
 
-  String parseTime(DateTime time) {
-    return "${time.day}/${time.month}/${time.year}";
+  String? parseTime(DateTime? time) {
+    if (time != null) {
+      return "${time.day}/${time.month}/${time.year}";
+    } else {
+      return "Nhấn để nhập";
+    }
   }
 
   Widget createValueWidget(BuildContext context, String param) {
     var isTimeParam = param.contains("Ngày");
     if (isTimeParam) {
       return PickTimeView(DateTime.now(), (date) {
-        // map[param] = parseTime(date);
+        map[param] = parseTime(date);
       });
     } else {
-      var textFieldKey = GlobalKey<FormState>();
-      textFieldKeys.add(textFieldKey);
       return TextFormField(
-        key: textFieldKey,
         maxLines: null,
         onChanged: (value) {
           map[param] = value;
+          print("${param}   ${map[param]}  $value");
         },
         decoration:
-            InputDecoration(border: InputBorder.none, hintText: map[param]),
-        validator: (input) {
-          if (input == null || input?.trim().isEmpty == true) {
-            return "Please enter some text";
-          } else {
-            return null;
-          }
-        },
+            InputDecoration(border: InputBorder.none, hintText: "Nhấn để nhập"),
       );
     }
   }
 
   bool validAllField() {
     var isValid = true;
-    for (var element in textFieldKeys) {
-      if (element.currentState?.validate() == false) {
+    for (var element in map.values.toList()) {
+      if (element == null ||
+          element.isEmpty == true ||
+          element == "Nhấn để nhập") {
         isValid = false;
         break;
       }
+    }
+    print(map);
+    if (int.tryParse(map["Lương tháng"] ?? "") == null) {
+      throw FormatException("Lương tháng phải là 1 số");
     }
     return isValid;
   }
@@ -159,7 +171,7 @@ class _BottomLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     var guideline = ConstraintId("guideline");
     return ConstraintLayout(
-      height: 44,
+      height: 60,
       children: [
         Guideline(id: guideline, guidelinePercent: 0.5),
         Padding(

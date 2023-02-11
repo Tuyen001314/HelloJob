@@ -202,6 +202,14 @@ class DetailJob extends StatelessWidget {
                   onPrimaryClick: (isAdmin) {
                     if (!isAdmin) {
                       toast("Coming soon");
+                    } else {
+                      _jobState.delete(job).then((success) {
+                        if (success) {
+                          toast("Success");
+                        } else {
+                          toast("Failure");
+                        }
+                      });
                     }
                   },
                   onSecondaryClick: (isAdmin) {

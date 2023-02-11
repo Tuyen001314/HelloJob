@@ -1,4 +1,5 @@
-import 'FieldData.dart';
+
+import 'User.dart';
 
 class UserInfo {
   final String email;

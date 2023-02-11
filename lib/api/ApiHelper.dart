@@ -1,16 +1,20 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:hellojob/api/dto/CreateJobResponseDto.dart';
 import 'package:hellojob/api/dto/LoginResponseDto.dart';
 import 'package:hellojob/api/dto/RefreshTokenResponseDto.dart';
 import 'package:http/http.dart' as http;
 
+import '../model/Job.dart';
+import 'dto/CreateJobDto.dart';
 import 'dto/GetAllJobResponse.dart';
 import 'dto/RegisterErrorDto.dart';
 import 'dto/UpdateProfileDto.dart';
 import 'dto/UpdateProfileResponseDto.dart';
 
 const BASE_URL = "https://job-portal.hieuhm.com";
+var accessToken = "";
 
 Future<LoginResponse> login(String email, String password) async {
   var url = "$BASE_URL/auth/login";
@@ -57,12 +61,12 @@ Future<GelAllJobResponse> search(String keyword) async {
   return GelAllJobResponse.fromJson(jsonDecode(httpResponse.body));
 }
 
-Future<UpdateProfileResponseDto> updateProfile(String token, UpdateProfileDto dto) async {
+Future<UpdateProfileResponseDto> updateProfile(UpdateProfileDto dto) async {
   var url = "$BASE_URL/user/update-profile";
-  print(token);
+  print(accessToken);
   Map<String, String> headers = {
     "Content-type": "application/json",
-    'Authorization': 'Bearer $token'
+    'Authorization': 'Bearer $accessToken'
   };
   var httpResponse = await http.put(
       url,
@@ -70,4 +74,47 @@ Future<UpdateProfileResponseDto> updateProfile(String token, UpdateProfileDto dt
     body: jsonEncode(dto.toJson()));
   print(httpResponse.body);
   return UpdateProfileResponseDto.fromJson(jsonDecode(httpResponse.body));
+}
+
+Future<CreateJobResponseDto> createJob(CreateJobDto dto) async {
+  var url = "$BASE_URL/job";
+  Map<String, String> headers = {
+    "Content-type": "application/json",
+    'Authorization': 'Bearer $accessToken'
+  };
+  var httpResponse = await http.post(
+      url,
+      headers: headers,
+      body: jsonEncode(dto.toJson()));
+
+  return CreateJobResponseDto.fromJson(jsonDecode(httpResponse.body));
+}
+
+Future<CreateJobResponseDto> updateJob(CreateJobDto dto, String idJob) async {
+  var url = "$BASE_URL/job/${idJob}";
+  Map<String, String> headers = {
+    "Content-type": "application/json",
+    'Authorization': 'Bearer $accessToken'
+  };
+  var httpResponse = await http.post(
+      url,
+      headers: headers,
+      body: jsonEncode(dto.toJson()));
+  return CreateJobResponseDto.fromJson(jsonDecode(httpResponse.body));
+
+}
+
+
+Future<bool> delete(Job job) async {
+  var url = "$BASE_URL/job/${job.id}";
+  print(accessToken);
+  Map<String, String> headers = {
+    "Content-type": "application/json",
+    'Authorization': 'Bearer $accessToken'
+  };
+  var httpResponse = await http.delete(
+      url,
+      headers: headers);
+
+  return Future(() => httpResponse.statusCode <= 300);
 }

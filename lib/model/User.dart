@@ -100,7 +100,7 @@ class User {
 }
 
 class FieldData {
-  String? value;
+  dynamic? value;
   String? key;
   String? type;
   String? group;

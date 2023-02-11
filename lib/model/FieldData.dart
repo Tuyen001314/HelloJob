@@ -1,3 +1,0 @@
-class FieldData {
-  const FieldData();
-}
